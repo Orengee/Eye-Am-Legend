@@ -1,0 +1,309 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Resources/shadow.png" type="Texture" id=2]
+[ext_resource path="res://Resources/hand.png" type="Texture" id=3]
+[ext_resource path="res://Resources/foot.png" type="Texture" id=4]
+[ext_resource path="res://Resources/backpack_boi_.png" type="Texture" id=5]
+[ext_resource path="res://Resources/wizard_eye_pink.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Player/Weapon.gd" type="Script" id=7]
+[ext_resource path="res://Components/Hurtbox/Hurtbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/Wallet Component/Wallet Component.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/Health Component/Health Component.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/Death Components/Player Death Component.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/InvincibleOnHit/InvincibleOnHit.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/Rotate Toward Mouse/Rotate Toward Mouse.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Player/Pickup Magnet.gd" type="Script" id=14]
+[ext_resource path="res://Tools/Music/Music.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Resources/Audio/gameplay1 (1).ogg" type="AudioStream" id=16]
+[ext_resource path="res://Resources/Audio/gameplay1_p (1).ogg" type="AudioStream" id=17]
+[ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Resources/Audio/damage.wav" type="AudioStream" id=19]
+[ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=20]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.4
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Torso:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -6 ), Vector2( 0, -7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Torso:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Foot 1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, -1 ), Vector2( -4, -1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Foot 1:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Foot 2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, -1 ), Vector2( 5, -1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Foot 2:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body/Hand 1:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, -6 ), Vector2( -8, -8 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Body/Hand 1:rotation_degrees")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body/Hand 2:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, -6 ), Vector2( 8, -8 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Body/Hand 2:rotation_degrees")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.1, 0.36 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Body/Head:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -24 ), Vector2( 0, -25 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Body/Head:rotation_degrees")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.2, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6, 6 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 100, 100 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+script = ExtResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0.133333, 0.133333, 0.133333, 0.345098 )
+position = Vector2( 2.98023e-007, 0.5 )
+scale = Vector2( 0.0866667, 0.03 )
+texture = ExtResource( 2 )
+
+[node name="Body" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Hand 2" type="Sprite" parent="Body"]
+visible = false
+position = Vector2( 8, -7.6035 )
+texture = ExtResource( 3 )
+
+[node name="Foot 2" type="Sprite" parent="Body"]
+position = Vector2( 4.71429, -1 )
+texture = ExtResource( 4 )
+
+[node name="Torso" type="Sprite" parent="Body"]
+position = Vector2( 0, -6 )
+texture = ExtResource( 5 )
+
+[node name="Foot 1" type="Sprite" parent="Body"]
+position = Vector2( -3.71429, -1 )
+texture = ExtResource( 4 )
+
+[node name="Hand 1" type="Sprite" parent="Body"]
+visible = false
+position = Vector2( -8, -7.6035 )
+texture = ExtResource( 3 )
+
+[node name="Head" type="Sprite" parent="Body"]
+position = Vector2( 0, -24 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Weapon" type="Node2D" parent="."]
+position = Vector2( 0, -5 )
+z_index = -1
+script = ExtResource( 7 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 2 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
+
+[node name="Collision" parent="Hurtbox" index="0"]
+position = Vector2( 0, -3.6035 )
+shape = SubResource( 3 )
+
+[node name="Wallet Component" parent="." instance=ExtResource( 9 )]
+
+[node name="Health Component" parent="." instance=ExtResource( 10 )]
+
+[node name="Player Death Component" parent="." instance=ExtResource( 11 )]
+
+[node name="InvincibleOnHit" parent="." instance=ExtResource( 12 )]
+invincibility_time = 1.0
+
+[node name="Camera Pivot" type="Position2D" parent="."]
+editor/display_folded = true
+
+[node name="Camera" type="Camera2D" parent="Camera Pivot" groups=[
+"Camera",
+]]
+position = Vector2( 70, 0 )
+current = true
+zoom = Vector2( 0.9, 0.9 )
+limit_left = -300
+limit_top = -100
+limit_right = 1450
+limit_bottom = 900
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+
+[node name="Rotate Toward Mouse" parent="Camera Pivot" instance=ExtResource( 13 )]
+enable_flip = true
+flip_node_path = NodePath("..")
+smoothing = 0.05
+
+[node name="Pickup Magnet" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+script = ExtResource( 14 )
+
+[node name="Collision" type="CollisionShape2D" parent="Pickup Magnet"]
+shape = SubResource( 4 )
+
+[node name="Music" parent="." instance=ExtResource( 15 )]
+stream = ExtResource( 16 )
+volume_db = 1.0
+max_distance = 3000.0
+
+[node name="Music2" parent="." instance=ExtResource( 15 )]
+stream = ExtResource( 17 )
+volume_db = -53.529
+volume = -50.0
+
+[node name="SFX" parent="." instance=ExtResource( 18 )]
+stream = ExtResource( 19 )
+volume = 3.0
+
+[node name="Damage Shake" parent="." instance=ExtResource( 20 )]
+shake_power = 4.0
+shake_duration = 0.2
+
+[node name="Weapon Switch Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="value_lowered" from="Health Component" to="SFX" method="_play_range"]
+[connection signal="value_lowered" from="Health Component" to="Damage Shake" method="starto"]
+
+[editable path="Hurtbox"]

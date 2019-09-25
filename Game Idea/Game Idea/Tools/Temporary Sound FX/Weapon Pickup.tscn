@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tools/Temporary Sound FX/Temp Sound FX.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resources/Audio/pickup.wav" type="AudioStream" id=2]
+
+[node name="Temp Sound FX" index="0" instance=ExtResource( 1 )]
+stream = ExtResource( 2 )
+volume_db = 2.0
+pitch_scale = 1.2
+volume = 2.0
+

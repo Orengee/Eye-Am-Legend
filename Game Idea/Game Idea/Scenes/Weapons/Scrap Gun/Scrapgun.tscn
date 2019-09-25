@@ -1,0 +1,112 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scenes/Weapons/Scrap Gun/Scrapgun.gd" type="Script" id=1]
+[ext_resource path="res://Resources/scrap_gun.png" type="Texture" id=2]
+[ext_resource path="res://Particles/Muzzle Flash.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/Rotate Toward Mouse/Rotate Toward Mouse.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/Knockback Sender/Knockback Sender.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/Shooting Components/Shooting Burst Component/Shooting Burst Component.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Bullets/Nail/Nail.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/Aiming Component/Aiming Component.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/Input Component/Input Held Component/Input Held Component.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/Cooldown Component/Cooldown Component.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=13]
+[ext_resource path="res://Components/Reload Component/Reload Component.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/Clip Component/Clip Component.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/UI/Reload Alert/Reload Alert.tscn" type="PackedScene" id=16]
+
+[node name="Scrapgun" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="Origin" type="Position2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, -10 )
+
+[node name="Sprite" type="Sprite" parent="Origin"]
+position = Vector2( 27.2997, 3.87596 )
+texture = ExtResource( 2 )
+
+[node name="Barrel" type="Position2D" parent="Origin"]
+editor/display_folded = true
+position = Vector2( 49.6873, -2.87595 )
+
+[node name="Muzzle Flash" parent="Origin/Barrel" instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 15, 0 )
+
+[node name="Rotate Toward Mouse" parent="Origin" instance=ExtResource( 4 )]
+enable_flip = true
+flip_node_path = NodePath("..")
+
+[node name="Knockback Sender" parent="Origin" instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 0, 10 )
+knockback_force = 600.0
+
+[node name="Shooting Burst Component" parent="." instance=ExtResource( 6 )]
+projectile = ExtResource( 7 )
+projectile_spawn_path = NodePath("../Origin/Barrel")
+spread = 30.0
+damage = 5
+projectile_speed = 600.0
+attack_modifier = 1
+number_of_bullets = 8
+
+[node name="Aiming Component" parent="." instance=ExtResource( 8 )]
+reference_path = NodePath("../Origin")
+
+[node name="Camera Shake" parent="." instance=ExtResource( 9 )]
+shake_power = 5.0
+shake_duration = 0.2
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Input Held Component" parent="." instance=ExtResource( 10 )]
+action = "Attack"
+
+[node name="Cooldown Component" parent="." groups=[
+"CCooldown",
+] instance=ExtResource( 11 )]
+duration = 0.7
+
+[node name="SFX" parent="." instance=ExtResource( 12 )]
+stream = ExtResource( 13 )
+pitch_scale = 0.5
+
+[node name="Reload Component" parent="." instance=ExtResource( 14 )]
+
+[node name="Clip Component" parent="." instance=ExtResource( 15 )]
+position = Vector2( 0, -10 )
+clip_size = 6
+rounds_left = 6
+maximum_ammo = 96
+reserve_ammo = 96
+
+[node name="Reload Alert" parent="." instance=ExtResource( 16 )]
+visible = false
+margin_left = -38.1041
+margin_top = -52.4218
+margin_right = 39.8959
+margin_bottom = -32.4218
+
+[connection signal="shot" from="." to="Origin/Knockback Sender" method="enable"]
+[connection signal="shoot" from="Shooting Burst Component" to="SFX" method="_play"]
+[connection signal="shoot" from="Shooting Burst Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
+[connection signal="shoot" from="Shooting Burst Component" to="Clip Component" method="on_round_used"]
+[connection signal="shoot" from="Shooting Burst Component" to="." method="animate_kickback"]
+[connection signal="shoot" from="Shooting Burst Component" to="." method="on_shoot"]
+[connection signal="shoot" from="Shooting Burst Component" to="Camera Shake" method="start"]
+[connection signal="triggered" from="Input Held Component" to="Shooting Burst Component" method="attack"]
+[connection signal="reload_complete" from="Reload Component" to="Clip Component" method="refill_clip"]
+[connection signal="reload_complete" from="Reload Component" to="Shooting Burst Component" method="enable"]
+[connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
+[connection signal="reload_started" from="Reload Component" to="Shooting Burst Component" method="disable"]
+[connection signal="clip_empty" from="Clip Component" to="Reload Alert" method="enable"]
+[connection signal="clip_empty" from="Clip Component" to="Shooting Burst Component" method="disable"]
+[connection signal="empty" from="Clip Component" to="Reload Component" method="disable"]
+[connection signal="empty" from="Clip Component" to="Shooting Burst Component" method="disable"]
+
+[editable path="Origin/Barrel/Muzzle Flash"]
