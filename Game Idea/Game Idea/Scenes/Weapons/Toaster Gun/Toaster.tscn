@@ -72,9 +72,9 @@ duration = 0.5
 [node name="SFX" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 12 )
 
-[connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
 [connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
+[connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="SFX" method="_play"]
 [connection signal="triggered" from="Input Held Component" to="Shooting Component" method="attack"]
 
