@@ -1,0 +1,582 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/vine's desert tileset.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="Desert Tileset" type="Node2D"]
+
+[node name="Sand Wall 1" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 1"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 1/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 2" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 2/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 3" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 3/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 4" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 4/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 5" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 5/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 6" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 6/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 7" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 7/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 8" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 8/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 9" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 9/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 10" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 10/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 11" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 11/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sand Wall 12" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Wall 12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Wall 12/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 1" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 128, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 1/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 2" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 128, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 2/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 3" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 128, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 3/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 4" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 4/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 5" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 5/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 6" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 6/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 7" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 192, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 7/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 8" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 192, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 8/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 9" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 192, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 9/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 10" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 224, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 10/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 11" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 224, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 11/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Wall 12" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 224, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Wall 12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Wall 12/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Obstacle 1" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 128, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Obstacle 1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Obstacle 1/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Obstacle 2" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 128, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Obstacle 2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Obstacle 2/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rock Obstacle 3" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Obstacle 3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Obstacle 3/StaticBody2D"]
+position = Vector2( 4, -6 )
+shape = SubResource( 1 )
+
+[node name="Rock Obstacle 4" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock Obstacle 4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock Obstacle 4/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pillar 1" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pillar 1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pillar 1/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pillar 2" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pillar 2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pillar 2/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pillar 3" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 128, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pillar 3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pillar 3/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pillar 4" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 128, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pillar 4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pillar 4/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pillar 5" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pillar 5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pillar 5/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pillar 6" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pillar 6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pillar 6/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pillar 7" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 160, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pillar 7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pillar 7/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 1" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 1/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 2" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 2/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 3" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 3/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 4" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 4/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 5" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 5/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 6" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 6/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 7" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 7/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 8" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 8/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand Pit 9" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand Pit 9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand Pit 9/StaticBody2D"]
+position = Vector2( -4, -4 )
+shape = SubResource( 1 )
+
+[node name="Sand 1" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 256, 32, 32 )
+
+[node name="Sand 2" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 192, 32, 32 )
+
+[node name="Sand 3" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 192, 32, 32 )
+
+[node name="Sand 4" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 224, 32, 32 )
+
+[node name="Sand 5" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 224, 32, 32 )
+
+[node name="Sand 6" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 224, 32, 32 )
+
+[node name="Sand 7" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 288, 32, 32 )
+
+[node name="Sand 8" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 256, 32, 32 )
+
+[node name="Sand 9" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 224, 32, 32 )
+
+[node name="Sand 10" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 192, 32, 32 )
+
+[node name="Sand 11" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 192, 32, 32 )
+
+[node name="Sand 12" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+
+[node name="Sand 13" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 96, 32, 32 )
+
+[node name="Sand 14" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 96, 32, 32 )
+

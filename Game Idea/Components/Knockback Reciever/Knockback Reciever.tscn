@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/Knockback Reciever/Knockback Reciever.gd" type="Script" id=1]
+
+[node name="Knockback Reciever" type="Area2D" groups=[
+"Knockback Reciever",
+]]
+script = ExtResource( 1 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
