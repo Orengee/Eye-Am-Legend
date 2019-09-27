@@ -19,6 +19,7 @@ extents = Vector2( 11.673, 13.0524 )
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource( 1 )
+piercing = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 editor/display_folded = true

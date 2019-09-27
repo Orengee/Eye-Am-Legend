@@ -1,6 +1,7 @@
 extends Node2D
 
 export(PackedScene) var projectile
+export(PackedScene) var shooting_effect
 export(NodePath) var projectile_spawn_path
 export(float) var spread = 0
 export(int) var damage = 1
@@ -51,6 +52,13 @@ func attack():
 
 
 func shoot():
+	
+	#Create shooting effect
+	if(shooting_effect != null):
+		print("ALKSFJKLAS")
+		var shooting_effect_instance = shooting_effect.instance()
+		shooting_effect_instance.global_position = projectile_spawn_node.global_position
+		Global.world.add_child(shooting_effect_instance)
 	
 	#Create and set up projectile
 	var projectile_instance = projectile.instance()

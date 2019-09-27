@@ -1,17 +1,17 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Bullets/Basic Bullet/Basic Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Bullets/Bullet/bullet1.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Bullets/Bullet/bullet7.png" type="Texture" id=2]
 [ext_resource path="res://Bullet Trail.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/Hitbox/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/Knockback Sender/Knockback Sender.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/Temporary/Temporary.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Resources/Bullets/Bullet/bullet2.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Bullets/Bullet/bullet3.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Bullets/Bullet/bullet4.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Bullets/Bullet/bullet5.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Bullets/Bullet/bullet6.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Bullets/Bullet/bullet7.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Bullets/Bullet/bullet1.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Bullets/Bullet/bullet2.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Bullets/Bullet/bullet3.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Bullets/Bullet/bullet4.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Bullets/Bullet/bullet5.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Bullets/Bullet/bullet6.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.3049, 12.8683 )
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
+"values": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 2 ) ]
 }
 
 [node name="Basic Bullet" type="Area2D"]

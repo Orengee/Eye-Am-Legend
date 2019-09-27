@@ -8,7 +8,6 @@ var speed = 0
 onready var collision = get_node("Collision")
 onready var timer = get_node("Timer")
 onready var anim_player = get_node("AnimationPlayer")
-onready var anim_sprite = get_node("AnimatedSprite")
 onready var spawn_anim_player = get_node("Spawn Animation Player")
 onready var tween = get_node("Tween")
 
@@ -16,7 +15,6 @@ func _ready():
 	
 	anim_player.play("spin")
 	spawn_anim_player.play("Jump")
-	anim_sprite.playing = true
 	
 	connect("body_entered",self, "on_body_entered")
 	timer.connect("timeout", self, "on_timer_timeout")
@@ -39,7 +37,7 @@ func _process(delta):
 		var move_dir = target.global_position - self.global_position
 		
 		var image_angle = move_dir.angle() + deg2rad(90)
-		$AnimatedSprite.rotation = lerp($AnimatedSprite.rotation,image_angle,0.05)
+		$Sprite.rotation = lerp($Sprite.rotation,image_angle,0.05)
 		
 		speed = clamp(speed+15,0,1000)
 		position += move_dir.normalized() * speed * delta

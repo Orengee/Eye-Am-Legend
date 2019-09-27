@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Weapons/Pistol/Pistol.gd" type="Script" id=1]
 [ext_resource path="res://Resources/pistol.png" type="Texture" id=2]
@@ -6,15 +6,16 @@
 [ext_resource path="res://Components/Rotate Toward Mouse/Rotate Toward Mouse.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/Shooting Components/Shooting Component.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Bullet/Bullet.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Components/Aiming Component/Aiming Component.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Components/Input Component/Input Held Component/Input Held Component.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Components/Cooldown Component/Cooldown Component.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Components/Clip Component/Clip Component.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Components/Reload Component/Reload Component.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=14]
-[ext_resource path="res://Scenes/UI/Reload Alert/Reload Alert.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Particles/Shooting Effect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/Aiming Component/Aiming Component.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/Input Component/Input Held Component/Input Held Component.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/Cooldown Component/Cooldown Component.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/Clip Component/Clip Component.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/Reload Component/Reload Component.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=15]
+[ext_resource path="res://Scenes/UI/Reload Alert/Reload Alert.tscn" type="PackedScene" id=16]
 
 [node name="Pistol" type="Node2D"]
 z_index = 1
@@ -44,52 +45,53 @@ flip_node_path = NodePath("..")
 position = Vector2( 1, 0 )
 z_index = 2
 projectile = ExtResource( 6 )
+shooting_effect = ExtResource( 7 )
 projectile_spawn_path = NodePath("../Origin/Barrel")
 spread = 5.0
-damage = 4
+damage = 5
 projectile_speed = 700.0
 attack_modifier = 1
 
-[node name="Aiming Component" parent="." instance=ExtResource( 7 )]
+[node name="Aiming Component" parent="." instance=ExtResource( 8 )]
 reference_path = NodePath("../Origin")
 
-[node name="Camera Shake" parent="." instance=ExtResource( 8 )]
+[node name="Camera Shake" parent="." instance=ExtResource( 9 )]
 shake_power = 2.0
 shake_duration = 0.2
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Input Held Component" parent="." instance=ExtResource( 9 )]
+[node name="Input Held Component" parent="." instance=ExtResource( 10 )]
 action = "Attack"
 
 [node name="Cooldown Component" parent="." groups=[
 "CCooldown",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 11 )]
 duration = 0.23
 
-[node name="Clip Component" parent="." instance=ExtResource( 11 )]
+[node name="Clip Component" parent="." instance=ExtResource( 12 )]
 clip_size = 12
 rounds_left = 12
 reserve_ammo = 120
 
-[node name="Reload Component" parent="." instance=ExtResource( 12 )]
+[node name="Reload Component" parent="." instance=ExtResource( 13 )]
 
-[node name="SFX" parent="." instance=ExtResource( 13 )]
-stream = ExtResource( 14 )
+[node name="SFX" parent="." instance=ExtResource( 14 )]
+stream = ExtResource( 15 )
 pitch_scale = 0.75
 
-[node name="Reload Alert" parent="." instance=ExtResource( 15 )]
+[node name="Reload Alert" parent="." instance=ExtResource( 16 )]
 visible = false
 margin_left = -38.98
 margin_top = -71.401
 margin_right = 39.02
 margin_bottom = -51.401
 
-[connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
-[connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
-[connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
 [connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="SFX" method="_play"]
+[connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
+[connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
+[connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
 [connection signal="triggered" from="Input Held Component" to="Shooting Component" method="attack"]
 [connection signal="ammo_refilled" from="Clip Component" to="Reload Component" method="enable"]
 [connection signal="ammo_refilled" from="Clip Component" to="Shooting Component" method="enable"]
@@ -98,8 +100,8 @@ margin_bottom = -51.401
 [connection signal="clip_refilled" from="Clip Component" to="Reload Alert" method="disable"]
 [connection signal="empty" from="Clip Component" to="Reload Component" method="disable"]
 [connection signal="empty" from="Clip Component" to="Shooting Component" method="disable"]
-[connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
 [connection signal="reload_complete" from="Reload Component" to="Clip Component" method="refill_clip"]
+[connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
 [connection signal="reload_started" from="Reload Component" to="Shooting Component" method="disable"]
 [connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
 

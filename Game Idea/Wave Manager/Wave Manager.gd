@@ -38,8 +38,8 @@ var enemies_per_wave = 10
 var enemies_spawned = 0
 
 var grunts_per_wave = 10
-var grunts_per_spawn = 2
-var grunt_spawn_interval = 4
+var grunts_per_spawn = 3
+var grunt_spawn_interval = 2
 var spawned_grunts = 0
 
 
@@ -114,9 +114,9 @@ func start_wave():
 	
 	if(Settings.nightmare == false):
 	
-		health_bonus += 3
-		speed_bonus += 12
-		
+		health_bonus += 2
+		speed_bonus += 7
+		grunts_per_spawn += 1
 		grunts_per_wave += 6
 	else:
 		health_bonus += 6
@@ -125,11 +125,7 @@ func start_wave():
 		grunts_per_spawn += 1
 	
 	#Things to happen every other round
-	if(wave % 2 == 0):
-		
-		grunts_per_spawn += 1
-		
-		pass
+
 	if(wave % 5 == 0):
 		
 		brutes_per_wave += 1

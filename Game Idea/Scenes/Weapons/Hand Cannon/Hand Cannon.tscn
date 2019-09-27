@@ -81,6 +81,7 @@ maximum_ammo = 36
 reserve_ammo = 36
 
 [node name="Reload Component" parent="." instance=ExtResource( 14 )]
+reload_time = 1.65
 
 [node name="Reload Alert" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -89,19 +90,19 @@ margin_top = -52.2665
 margin_right = 39.3536
 margin_bottom = -32.2665
 
+[connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
+[connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
 [connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="SFX" method="_play"]
-[connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
 [connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
-[connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
 [connection signal="triggered" from="Input Held Component" to="Shooting Component" method="attack"]
-[connection signal="clip_empty" from="Clip Component" to="Reload Alert" method="enable"]
 [connection signal="clip_empty" from="Clip Component" to="Shooting Component" method="disable"]
+[connection signal="clip_empty" from="Clip Component" to="Reload Alert" method="enable"]
 [connection signal="empty" from="Clip Component" to="Shooting Component" method="disable"]
 [connection signal="empty" from="Clip Component" to="Reload Component" method="disable"]
 [connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
 [connection signal="reload_complete" from="Reload Component" to="Clip Component" method="refill_clip"]
-[connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
 [connection signal="reload_started" from="Reload Component" to="Shooting Component" method="disable"]
+[connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
 
 [editable path="Origin/Barrel/Muzzle Flash"]

@@ -48,8 +48,8 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Health Component" parent="." instance=ExtResource( 4 )]
-maximum_value = 650
-value = 650
+maximum_value = 350
+value = 350
 
 [node name="Death Component" parent="." instance=ExtResource( 5 )]
 

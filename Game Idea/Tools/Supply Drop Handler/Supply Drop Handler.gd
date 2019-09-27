@@ -24,7 +24,8 @@ func _ready():
 
 func _process(delta):
 	
-	emit_signal("countdown_updated", timer.time_left)
+	var timer_time_left = int(timer.time_left)
+	emit_signal("countdown_updated", timer_time_left)
 	
 	pass
 

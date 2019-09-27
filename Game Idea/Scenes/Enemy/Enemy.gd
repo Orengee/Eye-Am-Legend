@@ -3,8 +3,8 @@ extends KinematicBody2D
 onready var target = position
 
 var velocity = Vector2(1,1)
-var speed_range = 50
-export(float) var speed = 70
+var speed_range = 15
+export(float) var speed = 100
 export(float) var MAX_FORCE = 0.06
 
 onready var health = get_node("Health Component")
