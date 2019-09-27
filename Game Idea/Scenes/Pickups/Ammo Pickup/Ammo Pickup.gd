@@ -1,6 +1,6 @@
 extends Area2D
 
-var amount = 3
+var amount = 1
 
 var magnet = false
 var speed = 0
@@ -13,7 +13,8 @@ onready var tween = get_node("Tween")
 
 func _ready():
 	
-	amount = int(rand_range(5,8))
+	amount = rand_range(0.1,0.15)
+	print(amount)
 	$Sprite.rotation_degrees += rand_range(-50,50)
 	
 	var rand_index = floor(rand_range(0,2))

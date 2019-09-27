@@ -18,7 +18,7 @@ onready var weapon_pickup = preload("res://Scenes/Weapon Pickup/Weapon Pickup.ts
 onready var spawn_location = get_node("Spawn Location")
 onready var animated_sprite = get_node("Sprites/Slot Machine")
 
-var weapon_pool = [tommy_gun,pistol,megaphone,marshmallow_gun,machine_pistol,
+var weapon_pool = [tommy_gun,megaphone,marshmallow_gun,machine_pistol,
 magic_missile,scrap_gun,grenade_launcher,shotgun,frisbee_gun,
 hand_cannon,cactus_gun,sword]
 

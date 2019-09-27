@@ -2,6 +2,11 @@ extends Node2D
 
 var wave = 0
 
+export(int) var spawn_limit = 20
+
+export(int) var spawn_box_width = 1
+export(int) var spawn_box_height = 1
+
 onready var round_start_timer = get_node("Round Start Timer")
 onready var spawn_positions = get_node("Spawn Positions")
 onready var grunt_timer = get_node("Grunt Timer")
@@ -162,35 +167,40 @@ func stop_wave():
 
 
 func spawn_grunt():
-	
-	if(spawned_grunts < grunts_per_wave):
+	if(spawned_grunts - Global.enemies_defeated <= spawn_limit):
 		
-		var spawn_number = grunts_per_spawn
-		
-		if(grunts_per_spawn > grunts_per_wave-spawned_grunts):
-			spawn_number = (grunts_per_wave-spawned_grunts)
-		
-		for x in spawn_number:
+		if(spawned_grunts < grunts_per_wave):
 			
-			#Create grunts and pick random spawn positions
+			var spawn_number = grunts_per_spawn
 			
-			var rand_position = get_random_spawn().global_position
-			var grunt_instance = grunt.instance()
-			grunt_instance.position = rand_position
-			grunt_instance.speed += speed_bonus
-			var health_component = grunt_instance.get_node("Health Component")
-			health_component.value += health_bonus
-			health_component.maximum_value = health_component.value
-			grunt_instance.z_index = 2
+			if(grunts_per_spawn > grunts_per_wave-spawned_grunts):
+				spawn_number = (grunts_per_wave-spawned_grunts)
 			
-			var explosion_instance = explosion.instance()
-			explosion_instance.global_position = rand_position
-			
-			Global.world.add_child(grunt_instance)
-			Global.world.add_child(explosion_instance)
-			
-			spawned_grunts += 1
-			enemies_spawned += 1
+			for x in spawn_number:
+				
+				#Create grunts and pick random spawn positions
+				
+				var rand_position_location = get_random_spawn().global_position
+				var rand_box_width_offset = rand_range(-spawn_box_width,spawn_box_width)
+				var rand_box_height_offset = rand_range(-spawn_box_height,spawn_box_height)
+				var rand_position = rand_position_location + Vector2(rand_box_width_offset,rand_box_height_offset)
+				
+				var grunt_instance = grunt.instance()
+				grunt_instance.position = rand_position
+				grunt_instance.speed += speed_bonus
+				var health_component = grunt_instance.get_node("Health Component")
+				health_component.value += health_bonus
+				health_component.maximum_value = health_component.value
+				grunt_instance.z_index = 2
+				
+				var explosion_instance = explosion.instance()
+				explosion_instance.global_position = rand_position
+				
+				Global.world.add_child(grunt_instance)
+				Global.world.add_child(explosion_instance)
+				
+				spawned_grunts += 1
+				enemies_spawned += 1
 			
 			
 	pass

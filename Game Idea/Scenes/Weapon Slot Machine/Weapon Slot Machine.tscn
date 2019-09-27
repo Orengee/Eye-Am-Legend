@@ -63,14 +63,14 @@ texture = ExtResource( 2 )
 [node name="Slot Machine" type="AnimatedSprite" parent="Sprites"]
 position = Vector2( 0.203903, 0.611721 )
 frames = SubResource( 1 )
-frame = 4
+frame = 1
 speed_scale = 6.0
 playing = true
 
 [node name="Gun" type="AnimatedSprite" parent="Sprites"]
 position = Vector2( -1.43941, -15.7392 )
 frames = SubResource( 2 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

@@ -8,6 +8,7 @@ export(float) var speed = 70
 export(float) var MAX_FORCE = 0.06
 
 onready var health = get_node("Health Component")
+onready var anim_player = get_node("AnimationPlayer")
 
 func _ready():
 	

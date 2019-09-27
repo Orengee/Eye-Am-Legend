@@ -64,13 +64,17 @@ func on_round_used():
 
 
 
-func refill_ammo(amount):
+func refill_ammo(percent):
 	
+	var ammo_percent = percent
+	var ammo_restored = floor(maximum_ammo * ammo_percent)
+	print(ammo_percent)
+	print(ammo_restored)
 	
-	if(reserve_ammo + amount > maximum_ammo):
+	if(reserve_ammo + ammo_restored > maximum_ammo):
 		reserve_ammo = maximum_ammo
 	else:
-		reserve_ammo += amount
+		reserve_ammo += ammo_restored
 	
 	emit_signal("ammo_refilled")
 	

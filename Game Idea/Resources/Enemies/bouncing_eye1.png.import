@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bouncing_eye3.png-952ac98d9ac7fccf627cd4de2a1c2aa9.stex"
+path="res://.import/bouncing_eye1.png-33751dbcb84b978b361ebeb79e83b036.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/bouncing_eye3.png"
-dest_files=[ "res://.import/bouncing_eye3.png-952ac98d9ac7fccf627cd4de2a1c2aa9.stex" ]
+source_file="res://Resources/Enemies/bouncing_eye1.png"
+dest_files=[ "res://.import/bouncing_eye1.png-33751dbcb84b978b361ebeb79e83b036.stex" ]
 
 [params]
 

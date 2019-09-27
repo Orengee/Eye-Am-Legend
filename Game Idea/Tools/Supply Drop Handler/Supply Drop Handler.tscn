@@ -9,11 +9,12 @@ supply_drop_interval = 45
 [node name="Spawn Locations" type="Node2D" parent="." groups=[
 "Spawner",
 ]]
-editor/display_folded = true
 
 [node name="Spawn Location1" type="Position2D" parent="Spawn Locations"]
 
 [node name="Spawn Location2" type="Position2D" parent="Spawn Locations"]
+
+[node name="Spawn Location3" type="Position2D" parent="Spawn Locations"]
 
 [node name="Timer" type="Timer" parent="."]
 
