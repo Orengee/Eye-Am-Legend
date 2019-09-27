@@ -1,6 +1,6 @@
 extends Area2D
 
-var amount = 1
+var amount = 3
 
 var magnet = false
 var speed = 0
@@ -9,10 +9,11 @@ var shell_sprite_1 = load("res://Resources/pistol_shell.png")
 var shell_sprite_2 = load("res://Resources/shotgun_shell.png")
 
 onready var temp_sfx = preload("res://Tools/Temporary Sound FX/Weapon Pickup.tscn")
+onready var tween = get_node("Tween")
 
 func _ready():
 	
-	amount = int(rand_range(1,4))
+	amount = int(rand_range(5,8))
 	$Sprite.rotation_degrees += rand_range(-50,50)
 	
 	var rand_index = floor(rand_range(0,2))
@@ -21,6 +22,12 @@ func _ready():
 		$Sprite.texture = shell_sprite_1
 	else:
 		$Sprite.texture = shell_sprite_2
+	
+	var rand_angle = rand_range(-180,180)
+	var direction = Vector2(cos(rand_angle), -sin(rand_angle))
+	var end_position = global_position + (direction * 20)
+	tween.interpolate_property(self,"global_position",global_position,end_position,0.7,Tween.TRANS_CUBIC,Tween.EASE_OUT)
+	tween.start()
 	
 	pass
 

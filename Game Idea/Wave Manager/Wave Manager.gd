@@ -110,9 +110,9 @@ func start_wave():
 	if(Settings.nightmare == false):
 	
 		health_bonus += 3
-		speed_bonus += 14
+		speed_bonus += 12
 		
-		grunts_per_wave += 7
+		grunts_per_wave += 6
 	else:
 		health_bonus += 6
 		speed_bonus += 8

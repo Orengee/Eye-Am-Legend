@@ -29,4 +29,6 @@ texture = ExtResource( 3 )
 [node name="Temporary" parent="." instance=ExtResource( 4 )]
 duration = 20.0
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_Ammo_Pickup_body_entered"]

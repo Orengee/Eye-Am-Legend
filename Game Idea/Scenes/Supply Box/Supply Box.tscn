@@ -38,17 +38,14 @@ value = 15
 
 [node name="Death Component" parent="." instance=ExtResource( 5 )]
 
-[node name="SpawnOnExit" parent="." instance=ExtResource( 6 )]
-object_path = "res://Scenes/Pickups/Ammo Pickup/Ammo Pickup.tscn"
-
 [node name="SpawnOnExit2" parent="." instance=ExtResource( 6 )]
 object_path = "res://Particles/Explosion.tscn"
 
 [node name="SpawnOnExit3" parent="." instance=ExtResource( 6 )]
-object_path = "res://Scenes/Pickups/Random Coin Dropper/Random Coin Dropper.tscn"
+object_path = "res://Scenes/Pickups/Random Number Dropper/Random Coin Dropper/Random Coin Dropper.tscn"
 
 [node name="SpawnOnExit4" parent="." instance=ExtResource( 6 )]
-object_path = "res://Scenes/Pickups/Random Coin Dropper/Random Coin Dropper.tscn"
+object_path = "res://Scenes/Pickups/Random Number Dropper/Random Ammo Dropper/Random Ammo Dropper.tscn"
 
 [node name="Hurtbox" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true

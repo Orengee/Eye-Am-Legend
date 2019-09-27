@@ -2,6 +2,6 @@
 
 [ext_resource path="res://Tools/SFX/SFX.gd" type="Script" id=1]
 
-[node name="SFX" type="AudioStreamPlayer2D"]
+[node name="SFX" type="AudioStreamPlayer"]
 script = ExtResource( 1 )
 

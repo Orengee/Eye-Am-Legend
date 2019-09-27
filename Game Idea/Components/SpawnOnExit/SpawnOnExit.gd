@@ -18,8 +18,10 @@ func on_owner_exit():
 	
 	#Spawn the instance of the object
 	var object_instance = object.instance()
-	object_instance.position = parent.global_position
-	object_instance.rotation = parent.rotation
+	if(object_instance.get("position") != null):
+		object_instance.position = parent.global_position
+	if(object_instance.get("rotation") != null):
+		object_instance.rotation = parent.rotation
 	Global.world.add_child(object_instance)
 	
 	pass

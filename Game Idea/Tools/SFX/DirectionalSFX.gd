@@ -1,4 +1,4 @@
-extends AudioStreamPlayer
+extends AudioStreamPlayer2D
 
 export(float) var volume = 1
 
@@ -10,8 +10,7 @@ func _ready():
 
 func _process(delta):
 	
-	#volume_db = volume * Settings.SFX_VOLUME
-	volume_db = volume
+	volume_db = volume * Settings.SFX_VOLUME
 	if(Settings.SFX_VOLUME <= 0):
 		playing = false
 	

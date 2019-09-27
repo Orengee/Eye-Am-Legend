@@ -193,6 +193,7 @@ valign = 1
 script = ExtResource( 23 )
 
 [node name="Crosshair" parent="CanvasLayer" instance=ExtResource( 24 )]
+pause_mode = 2
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
@@ -258,7 +259,7 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="Supply Drop Handler" parent="." instance=ExtResource( 29 )]
 editor/display_folded = true
-supply_drop_interval = 5
+supply_drop_interval = 20
 
 [node name="Spawn Locations" parent="Supply Drop Handler" index="0"]
 editor/display_folded = false
