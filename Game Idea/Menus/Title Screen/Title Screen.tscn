@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Menus/Title Screen/Title Screen.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -8,16 +8,18 @@
 [ext_resource path="res://Menus/Title Screen/TextureButton.gd" type="Script" id=6]
 [ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Resources/Audio/spawn.wav" type="AudioStream" id=8]
-[ext_resource path="res://Resources/UI Elements/settings_button_default.png" type="Texture" id=9]
-[ext_resource path="res://Resources/UI Elements/settings_button_pressed.png" type="Texture" id=10]
-[ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=11]
-[ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=12]
-[ext_resource path="res://Resources/Audio/title (1).ogg" type="AudioStream" id=13]
-[ext_resource path="res://Scenes/Eye Man Dummy/Eye Man Dummy.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Resources/Player_Idle.tres" type="Animation" id=15]
-[ext_resource path="res://Resources/shadow.png" type="Texture" id=16]
-[ext_resource path="res://Resources/grenande_launcher_2.png" type="Texture" id=17]
-[ext_resource path="res://Resources/wizard_eye_red.png" type="Texture" id=18]
+[ext_resource path="res://Menus/Title Screen/Button Sound.gd" type="Script" id=9]
+[ext_resource path="res://Resources/UI Elements/settings_button_default.png" type="Texture" id=10]
+[ext_resource path="res://Resources/UI Elements/settings_button_pressed.png" type="Texture" id=11]
+[ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=12]
+[ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=13]
+[ext_resource path="res://Resources/Audio/title (1).ogg" type="AudioStream" id=14]
+[ext_resource path="res://Menus/Title Screen/Menu Music.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Eye Man Dummy/Eye Man Dummy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Resources/Player_Idle.tres" type="Animation" id=17]
+[ext_resource path="res://Resources/shadow.png" type="Texture" id=18]
+[ext_resource path="res://Resources/grenande_launcher_2.png" type="Texture" id=19]
+[ext_resource path="res://Resources/wizard_eye_red.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "float"
@@ -109,17 +111,18 @@ one_shot = true
 
 [node name="Button Sound" type="AudioStreamPlayer2D" parent="Start Game"]
 stream = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Settings" type="TextureButton" parent="."]
 margin_left = 395.0
 margin_top = 436.0
 margin_right = 632.0
 margin_bottom = 524.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 11 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
 expand = true
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 
 [node name="Timer" type="Timer" parent="Settings"]
 wait_time = 0.88
@@ -128,6 +131,7 @@ one_shot = true
 [node name="Button Sound" type="AudioStreamPlayer2D" parent="Settings"]
 position = Vector2( 0, -107.469 )
 stream = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Camera Shake" parent="Settings" instance=ExtResource( 7 )]
 shake_power = 3.0
@@ -135,13 +139,14 @@ shake_duration = 0.2
 
 [node name="Menu Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 514.469, 196.165 )
-stream = ExtResource( 13 )
+stream = ExtResource( 14 )
 autoplay = true
+script = ExtResource( 15 )
 
-[node name="Body" parent="." instance=ExtResource( 14 )]
+[node name="Body" parent="." instance=ExtResource( 16 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Player_Idle = ExtResource( 15 )
+anims/Player_Idle = ExtResource( 17 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "Camera",
@@ -160,12 +165,12 @@ __meta__ = {
 modulate = Color( 0.133333, 0.133333, 0.133333, 0.345098 )
 position = Vector2( 0, 21.48 )
 scale = Vector2( 0.164067, 0.056689 )
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 
 [node name="Launcher" type="Sprite" parent="Left Pedestal"]
 position = Vector2( 0, -1.65549 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 
 [node name="Right Pedestal" type="Node2D" parent="."]
 editor/display_folded = true
@@ -178,12 +183,12 @@ __meta__ = {
 modulate = Color( 0.133333, 0.133333, 0.133333, 0.345098 )
 position = Vector2( 0, 40 )
 scale = Vector2( 0.164067, 0.056689 )
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 
 [node name="Enemy" type="Sprite" parent="Right Pedestal"]
 position = Vector2( 0, -1.65549 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 18 )
+texture = ExtResource( 20 )
 
 [node name="Pedestal Player" type="AnimationPlayer" parent="."]
 anims/float = SubResource( 1 )

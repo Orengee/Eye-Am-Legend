@@ -71,7 +71,6 @@ position = Vector2( 1082, 1545 )
 position = Vector2( 1150, 1545 )
 
 [node name="Shop" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 7.27924, 2.797 )
 __meta__ = {
 "_edit_group_": true
@@ -92,7 +91,6 @@ autoplay = "Player_Idle"
 anims/Player_Idle = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 10 )]
-editor/display_folded = true
 position = Vector2( 1080, 1200 )
 
 [node name="Camera Pivot" parent="Player" index="11"]

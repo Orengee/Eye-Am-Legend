@@ -2,13 +2,13 @@ extends HSlider
 
 func _ready():
 	
-	#value = Settings.SFX_VOLUME
+	value = Settings.SFX_VOLUME
 	
 	pass
 
 func _process(delta):
 	
-	#Settings.SFX_VOLUME = value
+	Settings.SFX_VOLUME = value
 	
 	
 	pass

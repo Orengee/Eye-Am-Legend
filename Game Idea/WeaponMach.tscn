@@ -5,7 +5,6 @@
 [ext_resource path="res://Resources/wizard_eye_pink.png" type="Texture" id=3]
 [ext_resource path="res://Components/Rotate Toward Mouse/Rotate Toward Mouse.tscn" type="PackedScene" id=4]
 
-
 [node name="WeaponMach" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -30,3 +29,4 @@ texture = ExtResource( 3 )
 [node name="Rotate Toward Mouse" parent="." instance=ExtResource( 4 )]
 enable_flip = true
 flip_node_path = NodePath("../Rotation Pivot")
+

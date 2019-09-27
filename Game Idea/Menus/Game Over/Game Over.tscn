@@ -56,7 +56,6 @@ shake_power = 5.0
 shake_duration = 0.3
 
 [node name="Back to Menu" type="TextureButton" parent="CanvasLayer"]
-editor/display_folded = true
 margin_left = 30.3704
 margin_top = 493.154
 margin_right = 311.37
@@ -118,4 +117,5 @@ valign = 1
 [connection signal="pressed" from="CanvasLayer/Quick Restart" to="CanvasLayer/Quick Restart" method="_on_Quick_Restart_pressed"]
 [connection signal="timeout" from="CanvasLayer/Quick Restart/Timer" to="CanvasLayer/Quick Restart" method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Back to Menu" to="CanvasLayer/Back to Menu" method="_on_Back_to_Menu_pressed"]
+[connection signal="timeout" from="CanvasLayer/Back to Menu/Timer" to="CanvasLayer/Back to Menu" method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Exit Game" to="CanvasLayer/Exit Game" method="_on_Exit_Game_pressed"]

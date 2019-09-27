@@ -79,11 +79,11 @@ func _ready():
 	load_weapon()
 	
 	if(Settings.nightmare == true):
-		music_player.volume = 2.5
+		Settings.MUSIC_VOLUME *= 2.5
 		music_player.stream = nightmare_music
 		music_player_2.playing = false
 	else:
-		music_player.volume = 1
+		Settings.MUSIC_VOLUME *= 1
 		music_player.stream = regular_music
 	
 	
