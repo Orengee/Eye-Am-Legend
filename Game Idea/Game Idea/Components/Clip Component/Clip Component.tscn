@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Components/Clip Component/Clip Component.gd" type="Script" id=1]
-
-[node name="Clip Component" type="Node2D" groups=[
-"CClip",
-]]
-script = ExtResource( 1 )
-
