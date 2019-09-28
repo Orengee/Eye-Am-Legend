@@ -8,3 +8,5 @@ var player_class
 
 var enemies_defeated = 0
 var game_over = false
+
+

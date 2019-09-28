@@ -144,7 +144,7 @@ func start_wave():
 		flyers_per_wave += 1
 		
 		pass
-	enemies_per_wave = grunts_per_wave
+	enemies_per_wave = grunts_per_wave + flyers_per_wave
 	enemies_spawned = 0
 	
 	spawned_grunts = 0
@@ -153,13 +153,12 @@ func start_wave():
 	spawned_bomber = 0
 	
 	grunt_timer.start()
-	if(brutes_per_wave > 0):
-		brute_timer.start()
 	if(flyers_per_wave > 0):
 		flyer_timer.start()
 	emit_signal("wave_started", wave)
 	
-	print("EPW: " + str(enemies_per_wave))
+	print("WAVE START")
+	print("-----EPW: " + str(enemies_per_wave))
 	
 	pass
 
@@ -172,6 +171,7 @@ func stop_wave():
 	
 	grunt_timer.stop()
 	round_start_timer.start()
+	print("WAVE STOP")
 	
 	pass
 

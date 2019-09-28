@@ -14,11 +14,9 @@ onready var tween = get_node("Tween")
 func _ready():
 	
 	amount = rand_range(0.1,0.2)
-	print(amount)
 	$Sprite.rotation_degrees += rand_range(-50,50)
 	
 	var rand_index = floor(rand_range(0,2))
-	print(rand_index)
 	if(rand_index == 1):
 		$Sprite.texture = shell_sprite_1
 	else:

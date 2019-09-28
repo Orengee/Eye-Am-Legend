@@ -55,7 +55,6 @@ func shoot():
 	
 	#Create shooting effect
 	if(shooting_effect != null):
-		print("ALKSFJKLAS")
 		var shooting_effect_instance = shooting_effect.instance()
 		shooting_effect_instance.global_position = projectile_spawn_node.global_position
 		Global.world.add_child(shooting_effect_instance)

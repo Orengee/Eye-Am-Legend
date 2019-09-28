@@ -55,6 +55,11 @@ func flash_white():
 	pass
 
 
+func squash_and_stretch():
+	
+	pass
+
+
 func on_invincibility_start():
 	
 	disabled = true

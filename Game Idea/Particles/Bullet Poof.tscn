@@ -3,21 +3,22 @@
 [ext_resource path="res://Resources/shadow.png" type="Texture" id=1]
 [ext_resource path="res://Particles/Bullet Poof.gd" type="Script" id=2]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.999777, 0.1744 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=3]
 flag_disable_z = true
 spread = 0.0
 gravity = Vector3( 0, 98, 0 )
 initial_velocity = 300.0
+angular_velocity = -1.85104e+007
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.07
-scale_curve = SubResource( 3 )
+scale_curve = SubResource( 2 )
 
 [node name="Bullet Poof" type="Position2D"]
 
@@ -27,6 +28,7 @@ emitting = false
 amount = 1
 lifetime = 0.15
 one_shot = true
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+

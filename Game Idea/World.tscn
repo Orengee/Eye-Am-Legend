@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -25,7 +25,6 @@
 [ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Scenes/Weapon Pickup/Weapon Pickup.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Scenes/Flyer/Flyer.tscn" type="PackedScene" id=26]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -252,9 +251,6 @@ position = Vector2( 1060.02, 361.762 )
 
 [node name="Weapon Pickup" parent="." instance=ExtResource( 25 )]
 position = Vector2( 1064.58, 1050.05 )
-
-[node name="Flyer" parent="." instance=ExtResource( 26 )]
-position = Vector2( 167.251, 1058.01 )
 
 [connection signal="nuke_used" from="Player" to="CanvasLayer/Nuke Counter" method="update_amount"]
 [connection signal="weapon_loaded" from="Player" to="CanvasLayer/Ammo Counter" method="update_all"]
