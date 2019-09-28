@@ -13,7 +13,7 @@ onready var tween = get_node("Tween")
 
 func _ready():
 	
-	amount = rand_range(0.1,0.15)
+	amount = rand_range(0.1,0.2)
 	print(amount)
 	$Sprite.rotation_degrees += rand_range(-50,50)
 	
@@ -26,7 +26,7 @@ func _ready():
 	
 	var rand_angle = rand_range(-180,180)
 	var direction = Vector2(cos(rand_angle), -sin(rand_angle))
-	var end_position = global_position + (direction * 20)
+	var end_position = global_position + (direction * 30)
 	tween.interpolate_property(self,"global_position",global_position,end_position,0.7,Tween.TRANS_CUBIC,Tween.EASE_OUT)
 	tween.start()
 	

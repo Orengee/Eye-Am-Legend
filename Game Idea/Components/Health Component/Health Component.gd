@@ -25,8 +25,9 @@ signal regen_stopped
 
 func _ready():
 	
-	regen_timer.wait_time = regen_rate
-	regen_delay_timer.wait_time = regen_delay
+	if(enable_regen == true):
+		regen_timer.wait_time = regen_rate
+		regen_delay_timer.wait_time = regen_delay
 	
 	if(regen_timer.is_connected("timeout", self, "regen_timeout") == false):
 		regen_timer.connect("timeout", self, "regen_timeout")

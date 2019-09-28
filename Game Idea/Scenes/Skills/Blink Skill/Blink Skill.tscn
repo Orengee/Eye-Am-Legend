@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Skills/Blink Skill/Blink Skill.gd" type="Script" id=1]
+[ext_resource path="res://Components/Cooldown Component/Cooldown Component.tscn" type="PackedScene" id=2]
+
+[node name="Blink Skill" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Cooldown Component" parent="." instance=ExtResource( 2 )]
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Resources/health_bar_middle.png" type="Texture" id=13]
 [ext_resource path="res://Scenes/UI/Wave Counter/Wave Counter.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/UI/Money Counter/Money Counter.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Pause.gd" type="Script" id=16]
+[ext_resource path="res://Menus/Pause.gd" type="Script" id=16]
 [ext_resource path="res://Resources/manaspc.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://Scenes/UI/Ammo Counter/Ammo Counter.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/UI/Nuke Counter/Nuke Counter.tscn" type="PackedScene" id=19]
@@ -29,6 +29,10 @@
 [ext_resource path="res://Tools/Round Manager.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Scenes/Weapon Pickup/Weapon Pickup.tscn" type="PackedScene" id=30]
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -275,6 +279,9 @@ position = Vector2( 1675.66, 767.724 )
 
 [node name="Spawn Location3" parent="Supply Drop Handler/Spawn Locations" index="2"]
 position = Vector2( 1060.02, 361.762 )
+
+[node name="Weapon Pickup" parent="." instance=ExtResource( 30 )]
+position = Vector2( 929.484, 1157.39 )
 
 [connection signal="upgraded" from="Speed Up" to="CanvasLayer/Upgrade Icon Container/Speed Up Icon" method="update_amount"]
 [connection signal="upgraded" from="Attack Up" to="CanvasLayer/Upgrade Icon Container/Attack Up Icon" method="update_amount"]

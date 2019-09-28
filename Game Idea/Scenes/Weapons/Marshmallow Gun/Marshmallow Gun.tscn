@@ -45,9 +45,9 @@ z_index = 2
 projectile = ExtResource( 6 )
 projectile_spawn_path = NodePath("../Origin/Barrel")
 spread = 7.0
-damage = 5
+damage = 6
 projectile_speed = 500.0
-attack_modifier = 1
+attack_modifier = 2
 
 [node name="Aiming Component" parent="." instance=ExtResource( 7 )]
 reference_path = NodePath("../Origin")
@@ -64,7 +64,7 @@ action = "Attack"
 [node name="Cooldown Component" parent="." groups=[
 "CCooldown",
 ] instance=ExtResource( 10 )]
-duration = 0.23
+duration = 0.18
 
 [node name="SFX" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 12 )
@@ -83,19 +83,19 @@ visible = false
 margin_top = -51.648
 margin_bottom = -31.648
 
-[connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="SFX" method="_play"]
-[connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
+[connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
+[connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
 [connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
 [connection signal="triggered" from="Input Held Component" to="Shooting Component" method="attack"]
-[connection signal="clip_empty" from="Clip Component" to="Reload Alert" method="enable"]
 [connection signal="clip_empty" from="Clip Component" to="Shooting Component" method="disable"]
+[connection signal="clip_empty" from="Clip Component" to="Reload Alert" method="enable"]
 [connection signal="empty" from="Clip Component" to="Reload Component" method="disable"]
 [connection signal="empty" from="Clip Component" to="Shooting Component" method="disable"]
 [connection signal="reload_complete" from="Reload Component" to="Clip Component" method="refill_clip"]
 [connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
-[connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
 [connection signal="reload_started" from="Reload Component" to="Shooting Component" method="disable"]
+[connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
 
 [editable path="Origin/Barrel/Muzzle Flash"]

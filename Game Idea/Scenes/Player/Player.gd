@@ -16,11 +16,6 @@ var paused = false
 export(int) var damage_bonus = 0
 export(int) var speed_bonus = 0
 
-
-
-onready var blank = preload("res://Scenes/Blank/Blank.tscn")
-var nukes = 2
-
 onready var body = get_node("Body")
 onready var weapon_node = get_node("Weapon")
 onready var animation_player = get_node("AnimationPlayer")
@@ -30,6 +25,7 @@ onready var tween = get_node("Tween")
 onready var music_player = get_node("Music")
 onready var music_player_2 = get_node("Music2")
 onready var weapon_switch_timer = get_node("Weapon Switch Timer")
+onready var skill = get_node("Skill")
 
 onready var regular_music = preload("res://Resources/Audio/gameplay1 (1).ogg")
 onready var nightmare_music = preload("res://Resources/Audio/nightmare.ogg")
@@ -77,6 +73,10 @@ func _ready():
 	current_weapon_index = 0
 	new_weapon(preload("res://Scenes/Weapons/Swords/Sword.tscn"))
 	load_weapon()
+	
+	#Add skill
+	var skill_node = Global.player_class.instance()
+	skill.add_child(skill_node)
 	
 	if(Settings.nightmare == true):
 		music_player.volume = 2.5
@@ -139,14 +139,6 @@ func _physics_process(delta):
 	body.rotation_degrees = lerp(body.rotation_degrees,tilt_angle * input_direction.x, tilt_weight)
 	
 	move_and_slide(velocity, Vector2(0,0))
-	
-	if(nukes > 0):
-		if(Input.is_action_just_pressed("Blank")):
-			var blank_instance = blank.instance()
-			blank_instance.global_position = self.global_position
-			Global.world.add_child(blank_instance)
-			nukes -= 1
-			emit_signal("nuke_used", nukes)
 
 
 
@@ -286,15 +278,6 @@ func ammo_pickup(amount):
 			pass
 		else:
 			return
-	
-	pass
-
-
-
-func gain_nuke():
-	
-	nukes += 1
-	emit_signal("nuke_used", nukes)
 	
 	pass
 

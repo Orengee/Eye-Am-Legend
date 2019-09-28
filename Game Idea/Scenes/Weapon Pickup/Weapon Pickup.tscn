@@ -6,7 +6,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
-var weapon_preload = preload(\"res://Scenes/Weapons/Marshmallow Gun/Marshmallow Gun.tscn\")
+var weapon_preload = preload(\"res://Scenes/Weapons/Toaster Gun/Toaster.tscn\")
 
 onready var sprite = get_node(\"Sprite\")
 onready var anim_player = get_node(\"AnimationPlayer\")
