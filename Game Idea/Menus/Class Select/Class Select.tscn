@@ -98,6 +98,7 @@ texture = ExtResource( 2 )
 position = Vector2( 1.5359, 0.290455 )
 scale = Vector2( 0.491229, 0.464477 )
 frames = SubResource( 3 )
+frame = 12
 playing = true
 
 [node name="Tween" type="Tween" parent="."]

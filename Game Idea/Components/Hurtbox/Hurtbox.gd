@@ -49,13 +49,8 @@ func on_area_entered(area):
 
 func flash_white():
 	
-	tween.interpolate_property(owner, "modulate", Color(100,100,100,100), Color(1,1,1,1),0.1,Tween.TRANS_LINEAR,Tween.EASE_IN)
-	tween.start()
-	
-	pass
-
-
-func squash_and_stretch():
+	#tween.interpolate_property(owner, "modulate", Color(100,100,100,100), Color(1,1,1,1),0.1,Tween.TRANS_LINEAR,Tween.EASE_IN)
+	#tween.start()
 	
 	pass
 

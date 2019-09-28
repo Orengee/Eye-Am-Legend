@@ -76,7 +76,7 @@ func _ready():
 		flyer_timer.connect("timeout", self, "on_flyer_timer_timeout")
 	
 	round_start_timer.connect("timeout", self, "on_round_timer_timeout")
-	enemies_per_wave = grunts_per_wave + flyers_per_wave + brutes_per_wave + bombers_per_wave
+	enemies_per_wave = grunts_per_wave + flyers_per_wave
 	
 	print("YOUR DREAMS CAN COME TRUE")
 	grunt_timer.wait_time = grunt_spawn_interval
@@ -93,8 +93,8 @@ func _ready():
 func _process(delta):
 	
 	if(Global.enemies_defeated == enemies_per_wave):
+		enemies_per_wave = 0
 		stop_wave()
-		Global.enemies_defeated = 0
 	
 	pass
 
@@ -111,11 +111,12 @@ func get_random_spawn():
 
 func start_wave():
 	
+	Global.enemies_defeated = 0
+	
 	if(wave > 0):
 		if(Settings.nightmare == false):
 			Global.player.music_active()
 	
-	print("WAVE START")
 	#Update Stats
 	wave += 1
 	

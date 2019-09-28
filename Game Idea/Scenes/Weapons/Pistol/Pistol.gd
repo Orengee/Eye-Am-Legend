@@ -13,7 +13,8 @@ func _ready():
 	
 	if(self.has_node("Clip Component") == true):
 		clip_component = self.get_node("Clip Component")
-	
+		
+		
 	pass
 
 func animate_kickback():

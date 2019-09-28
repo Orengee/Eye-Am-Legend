@@ -47,15 +47,15 @@ z_index = 2
 projectile = ExtResource( 6 )
 projectile_spawn_path = NodePath("../../Megaphone/Origin/Barrel")
 spread = 2.0
-projectile_speed = 400.0
+projectile_speed = 500.0
 attack_modifier = 1
 
 [node name="Aiming Component" parent="." instance=ExtResource( 7 )]
 reference_path = NodePath("../Origin")
 
 [node name="Camera Shake" parent="." instance=ExtResource( 8 )]
-shake_power = 2.0
-shake_duration = 0.2
+shake_power = 3.0
+shake_duration = 0.25
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -65,7 +65,7 @@ action = "Attack"
 [node name="Cooldown Component" parent="." groups=[
 "CCooldown",
 ] instance=ExtResource( 10 )]
-duration = 0.15
+duration = 0.1
 
 [node name="SFX" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 12 )
@@ -85,18 +85,18 @@ margin_top = -51.0055
 margin_right = 40.5077
 margin_bottom = -31.0055
 
-[connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="SFX" method="_play"]
-[connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
-[connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
+[connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
 [connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
+[connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
+[connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
 [connection signal="triggered" from="Input Held Component" to="Shooting Component" method="attack"]
 [connection signal="clip_empty" from="Clip Component" to="Reload Alert" method="enable"]
 [connection signal="clip_empty" from="Clip Component" to="Shooting Component" method="disable"]
 [connection signal="empty" from="Clip Component" to="Reload Component" method="disable"]
 [connection signal="empty" from="Clip Component" to="Shooting Component" method="disable"]
-[connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
 [connection signal="reload_complete" from="Reload Component" to="Clip Component" method="refill_clip"]
+[connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
 [connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
 [connection signal="reload_started" from="Reload Component" to="Shooting Component" method="disable"]
 

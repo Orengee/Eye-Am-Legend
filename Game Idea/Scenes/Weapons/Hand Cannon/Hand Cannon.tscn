@@ -20,7 +20,7 @@
 z_index = 1
 script = ExtResource( 1 )
 kickback_amount = -40.0
-kickback_length = 1.0
+kickback_length = 0.2
 
 [node name="Origin" type="Position2D" parent="."]
 editor/display_folded = true
@@ -50,7 +50,7 @@ projectile = ExtResource( 6 )
 projectile_spawn_path = NodePath("../Origin/Barrel")
 spread = 4.0
 damage = 65
-projectile_speed = 800.0
+projectile_speed = 1200.0
 attack_modifier = 4
 
 [node name="Aiming Component" parent="." instance=ExtResource( 7 )]
@@ -58,7 +58,7 @@ reference_path = NodePath("../Origin")
 
 [node name="Camera Shake" parent="." instance=ExtResource( 8 )]
 shake_power = 5.0
-shake_duration = 0.2
+shake_duration = 0.25
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -68,7 +68,7 @@ action = "Attack"
 [node name="Cooldown Component" parent="." groups=[
 "CCooldown",
 ] instance=ExtResource( 10 )]
-duration = 0.5
+duration = 0.2
 
 [node name="SFX" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 12 )
@@ -81,7 +81,6 @@ maximum_ammo = 36
 reserve_ammo = 36
 
 [node name="Reload Component" parent="." instance=ExtResource( 14 )]
-reload_time = 1.65
 
 [node name="Reload Alert" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -90,19 +89,19 @@ margin_top = -52.2665
 margin_right = 39.3536
 margin_bottom = -32.2665
 
+[connection signal="shoot" from="Shooting Component" to="SFX" method="_play"]
+[connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
 [connection signal="shoot" from="Shooting Component" to="Camera Shake" method="start"]
 [connection signal="shoot" from="Shooting Component" to="." method="animate_kickback"]
 [connection signal="shoot" from="Shooting Component" to="Origin/Barrel/Muzzle Flash" method="enable"]
-[connection signal="shoot" from="Shooting Component" to="SFX" method="_play"]
-[connection signal="shoot" from="Shooting Component" to="Clip Component" method="on_round_used"]
 [connection signal="triggered" from="Input Held Component" to="Shooting Component" method="attack"]
-[connection signal="clip_empty" from="Clip Component" to="Shooting Component" method="disable"]
 [connection signal="clip_empty" from="Clip Component" to="Reload Alert" method="enable"]
+[connection signal="clip_empty" from="Clip Component" to="Shooting Component" method="disable"]
 [connection signal="empty" from="Clip Component" to="Shooting Component" method="disable"]
 [connection signal="empty" from="Clip Component" to="Reload Component" method="disable"]
-[connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
 [connection signal="reload_complete" from="Reload Component" to="Clip Component" method="refill_clip"]
-[connection signal="reload_started" from="Reload Component" to="Shooting Component" method="disable"]
+[connection signal="reload_complete" from="Reload Component" to="Shooting Component" method="enable"]
 [connection signal="reload_started" from="Reload Component" to="Reload Alert" method="disable"]
+[connection signal="reload_started" from="Reload Component" to="Shooting Component" method="disable"]
 
 [editable path="Origin/Barrel/Muzzle Flash"]

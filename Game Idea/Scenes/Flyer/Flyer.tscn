@@ -131,7 +131,10 @@ autoplay = "default"
 playback_speed = 0.5
 anims/default = SubResource( 5 )
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="tree_exiting" from="." to="." method="_on_Enemy_tree_exiting"]
+[connection signal="damaged" from="Hurtbox" to="." method="_on_Hurtbox_damaged"]
 
 [editable path="Hurtbox"]
 

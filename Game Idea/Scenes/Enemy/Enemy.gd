@@ -9,6 +9,9 @@ export(float) var MAX_FORCE = 0.06
 
 onready var health = get_node("Health Component")
 onready var anim_player = get_node("AnimationPlayer")
+onready var tween = get_node("Tween")
+
+onready var shader = preload("res://WhiteShader.tres")
 
 func _ready():
 	
@@ -43,10 +46,56 @@ func steer(target : Vector2) -> Vector2:
 	return target_velocity
 
 
+func animate_hit():
+	
+	tween.interpolate_property($Sprite,"scale",Vector2(1.45,1.45),Vector2(1,1),0.7,Tween.TRANS_BACK,Tween.EASE_OUT)
+	tween.start()
+	
+	pass
+
 
 func _on_Enemy_tree_exiting():
 	
 	Global.enemies_defeated += 1
+	Engine.time_scale = 1
 	print("Enemies Defeated: " + str(Global.enemies_defeated))
+	
+	pass
+
+
+func flash_white():
+	
+	$Sprite.material = shader
+	
+	var t = Timer.new()
+	t.set_wait_time(0.1)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	
+	$Sprite.material = null
+	
+	t.queue_free()
+	
+	pass
+
+
+func _on_Hurtbox_damaged(damage):
+	
+	animate_hit()
+	flash_white()
+	
+	Engine.time_scale = 0.6
+	var t = Timer.new()
+	t.set_wait_time(0.06)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	Engine.time_scale = 1
+	
+	
+	t.queue_free()
 	
 	pass
