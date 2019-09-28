@@ -108,6 +108,7 @@ valign = 1
 position = Vector2( 120.318, 119.09 )
 scale = Vector2( 3.49384, 3.49384 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Camera Shake" parent="." instance=ExtResource( 9 )]
