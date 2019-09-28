@@ -11,10 +11,12 @@ onready var round_start_timer = get_node("Round Start Timer")
 onready var spawn_positions = get_node("Spawn Positions")
 onready var grunt_timer = get_node("Grunt Timer")
 onready var brute_timer = get_node("Brute Timer")
+onready var flyer_timer = get_node("Flyer Timer")
 
 onready var explosion = preload("res://Particles/Explosion.tscn")
 onready var grunt = preload("res://Scenes/Enemy/Enemy.tscn")
 onready var brute = preload("res://Scenes/Brute/Brute.tscn")
+onready var flyer = preload("res://Scenes/Flyer/Flyer.tscn")
 
 
 signal wave_started
@@ -45,7 +47,7 @@ var spawned_grunts = 0
 
 var flyers_per_wave = 0
 var flyers_per_spawn = 0
-var flyer_spawn_iterval = 0
+var flyer_spawn_interval = 5
 var spawned_flyer = 0
 
 
@@ -70,6 +72,9 @@ func _ready():
 	if(brute_timer.is_connected("timeout", self, "on_brute_timer_timeout") == false):
 		brute_timer.connect("timeout", self, "on_brute_timer_timeout")
 	
+	if(flyer_timer.is_connected("timeout", self, "on_flyer_timer_timeout") == false):
+		flyer_timer.connect("timeout", self, "on_flyer_timer_timeout")
+	
 	round_start_timer.connect("timeout", self, "on_round_timer_timeout")
 	enemies_per_wave = grunts_per_wave + flyers_per_wave + brutes_per_wave + bombers_per_wave
 	
@@ -77,6 +82,8 @@ func _ready():
 	grunt_timer.wait_time = grunt_spawn_interval
 	
 	brute_timer.wait_time = brute_spawn_interval
+	
+	flyer_timer.wait_time = flyer_spawn_interval
 	
 	start_wave()
 	
@@ -124,14 +131,19 @@ func start_wave():
 		grunts_per_wave += 9
 		grunts_per_spawn += 1
 	
-	#Things to happen every other round
-
-	if(wave % 5 == 0):
+	
+	if(wave == 3):
 		
-		brutes_per_wave += 1
+		flyers_per_wave += 1
+		flyers_per_spawn += 1
 		
 		pass
 	
+	if(wave > 3 and (wave % 2) == 0):
+		
+		flyers_per_wave += 1
+		
+		pass
 	enemies_per_wave = grunts_per_wave
 	enemies_spawned = 0
 	
@@ -143,6 +155,8 @@ func start_wave():
 	grunt_timer.start()
 	if(brutes_per_wave > 0):
 		brute_timer.start()
+	if(flyers_per_wave > 0):
+		flyer_timer.start()
 	emit_signal("wave_started", wave)
 	
 	print("EPW: " + str(enemies_per_wave))
@@ -234,6 +248,46 @@ func spawn_brute():
 	pass
 
 
+func spawn_flyer():
+	if(spawned_grunts - Global.enemies_defeated <= spawn_limit):
+		
+		if(spawned_flyer < flyers_per_wave):
+			
+			var spawn_number = flyers_per_spawn
+			
+			if(flyers_per_spawn > flyers_per_wave-spawned_flyer):
+				spawn_number = (flyers_per_wave-spawned_flyer)
+			
+			for x in spawn_number:
+				
+				#Create grunts and pick random spawn positions
+				
+				var rand_position_location = get_random_spawn().global_position
+				var rand_box_width_offset = rand_range(-spawn_box_width,spawn_box_width)
+				var rand_box_height_offset = rand_range(-spawn_box_height,spawn_box_height)
+				var rand_position = rand_position_location + Vector2(rand_box_width_offset,rand_box_height_offset)
+				
+				var grunt_instance = flyer.instance()
+				grunt_instance.position = rand_position
+				grunt_instance.speed += speed_bonus
+				var health_component = grunt_instance.get_node("Health Component")
+				health_component.value += health_bonus
+				health_component.maximum_value = health_component.value
+				grunt_instance.z_index = 2
+				
+				var explosion_instance = explosion.instance()
+				explosion_instance.global_position = rand_position
+				
+				Global.world.add_child(grunt_instance)
+				Global.world.add_child(explosion_instance)
+				
+				spawned_flyer += 1
+				enemies_spawned += 1
+			
+			
+	pass
+
+
 func on_grunt_timer_timeout():
 	
 	spawn_grunt()
@@ -253,6 +307,14 @@ func on_brute_timer_timeout():
 		
 	pass
 
+
+func on_flyer_timer_timeout():
+	
+	spawn_flyer()
+	if(spawned_flyer < flyers_per_wave):
+		flyer_timer.start()
+	
+	pass
 
 
 func on_round_timer_timeout():

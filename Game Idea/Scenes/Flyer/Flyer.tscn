@@ -56,11 +56,12 @@ tracks/1/keys = {
 "values": [ Vector2( 0.189133, 0.135714 ), Vector2( 0.161649, 0.135714 ), Vector2( 0.18276, 0.135714 ), Vector2( 0.21582, 0.128544 ), Vector2( 0.173599, 0.135714 ) ]
 }
 
-[node name="Enemy" type="KinematicBody2D" groups=[
+[node name="Flyer" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
 script = ExtResource( 1 )
-MAX_FORCE = 0.08
+speed = 240.0
+MAX_FORCE = 0.05
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.0666667, 0.0666667, 0.0666667, 0.329412 )
@@ -69,6 +70,7 @@ scale = Vector2( 0.189133, 0.135714 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.282353, 0.901961, 0, 1 )
 position = Vector2( 0.681122, 0 )
 texture = ExtResource( 3 )
 
@@ -106,8 +108,10 @@ position = Vector2( 0.291992, 3.50387 )
 shape = SubResource( 3 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+light_mask = 2
 position = Vector2( -1.52588e-005, 6.57003 )
 shape = SubResource( 4 )
+disabled = true
 
 [node name="SpawnOnExit" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2, 0 )

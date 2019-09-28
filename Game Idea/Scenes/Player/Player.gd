@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
-var maximum_speed = 170
+var maximum_speed = 135
+var maximum_sprinting_speed = 220
 var speed_weight = 0.3
 var tilt_angle = 10
 var tilt_weight = 0.1
+var sprinting = false
 
 var velocity = Vector2(0,0)
 
@@ -103,26 +105,28 @@ func _input(event):
 				if(event.button_index == BUTTON_WHEEL_DOWN):
 					previous_weapon()
 					pass
+					
+	if(event.is_action_pressed("Sprint")):
+		sprinting = true
+	if(event.is_action_released("Sprint")):
+		sprinting = false
 	
 	pass
 
 
 func _physics_process(delta):
 	
+	
 	#Get input for running and update direction variables
-	
-	if(Input.is_action_just_pressed("Test")):
-		
-		print(weapon_data[current_weapon_index]["clip"])
-		print(weapon_data[current_weapon_index]["ammo"])
-		
-		pass
-	
 	var HORIZONTAL = int(Input.is_action_pressed("Right")) - int(Input.is_action_pressed("Left"))
 	var VERTICAL = int(Input.is_action_pressed("Down")) - int(Input.is_action_pressed("Up"))
 	
-	velocity.x = lerp(velocity.x, HORIZONTAL * (maximum_speed + speed_bonus) , speed_weight)
-	velocity.y = lerp(velocity.y, VERTICAL * (maximum_speed + speed_bonus) , speed_weight)
+	if(sprinting == false):
+		velocity.x = lerp(velocity.x, HORIZONTAL * (maximum_speed + speed_bonus) , speed_weight)
+		velocity.y = lerp(velocity.y, VERTICAL * (maximum_speed + speed_bonus) , speed_weight)
+	else:
+		velocity.x = lerp(velocity.x, HORIZONTAL * (maximum_sprinting_speed + speed_bonus) , speed_weight)
+		velocity.y = lerp(velocity.y, VERTICAL * (maximum_sprinting_speed + speed_bonus) , speed_weight)
 	
 	#Update variables
 	input_direction = Vector2(HORIZONTAL, VERTICAL)
