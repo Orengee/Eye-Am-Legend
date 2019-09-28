@@ -60,7 +60,6 @@ tracks/1/keys = {
 "Enemy",
 ]]
 script = ExtResource( 1 )
-speed = 130.0
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.0666667, 0.0666667, 0.0666667, 0.329412 )
@@ -91,8 +90,8 @@ position = Vector2( -0.583984, 6.71574 )
 shape = SubResource( 2 )
 
 [node name="Health Component" parent="." instance=ExtResource( 6 )]
-maximum_value = 13
-value = 13
+maximum_value = 15
+value = 15
 
 [node name="Death Component" parent="." instance=ExtResource( 7 )]
 
