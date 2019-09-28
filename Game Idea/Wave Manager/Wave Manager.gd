@@ -120,7 +120,7 @@ func start_wave():
 		grunts_per_wave += 6
 	else:
 		health_bonus += 6
-		speed_bonus += 8
+		speed_bonus += 5
 		grunts_per_wave += 9
 		grunts_per_spawn += 1
 	

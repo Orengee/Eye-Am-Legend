@@ -6,6 +6,7 @@ onready var airstrike_skill = preload("res://Scenes/Skills/Airstrike Skill/Airst
 onready var blink_skill = preload("res://Scenes/Skills/Blink Skill/Blink Skill.tscn")
 onready var sentry_skill = preload("res://Scenes/Skills/Sentry Skill/Sentry Skill.tscn")
 
+
 enum CLASS{
 	
 	mage = 0,
@@ -13,6 +14,7 @@ enum CLASS{
 	engineer = 2
 	
 }
+
 
 var CLASSES
 
@@ -39,9 +41,6 @@ func _ready():
 	
 }
 	
-	Global.player_class = CLASSES[CLASS.mage]["skill"]
+	Global.player_class = CLASSES[CLASS.soldier]["skill"]
 	
 	pass
-
-
-

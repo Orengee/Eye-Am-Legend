@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Airstrike/Airstrike.gd" type="Script" id=1]
+[ext_resource path="res://Resources/crosshair.png" type="Texture" id=2]
+[ext_resource path="res://Components/Hitbox/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/Knockback Sender/Knockback Sender.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 79.0104, 71.4789 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 95.5914, 87.0845 )
+
+[node name="Airstrike" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Activation Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Despawn Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+damage = 30
+target_group = "Enemy"
+
+[node name="Collision" parent="Hitbox" index="0"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Knockback Sender" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+knockback_force = 800.0
+
+[node name="Collision" parent="Knockback Sender" index="0"]
+shape = SubResource( 2 )
+disabled = true
+
+[connection signal="timeout" from="Activation Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Despawn Timer" to="." method="_on_Despawn_Timer_timeout"]
+
+[editable path="Hitbox"]
+
+[editable path="Knockback Sender"]

@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var target = position
 
 var velocity = Vector2(1,1)
-var speed_range = 15
+var speed_range = 25
 export(float) var speed = 100
 export(float) var MAX_FORCE = 0.06
 

@@ -65,7 +65,7 @@ func _process(delta):
 
 func animate_camera_movement(new_position):
 	
-	tween.interpolate_property(camera,"position",camera.position,new_position,1,Tween.TRANS_CUBIC,Tween.EASE_OUT)
+	tween.interpolate_property(camera,"position",camera.position,new_position,0.5,Tween.TRANS_CUBIC,Tween.EASE_OUT)
 	tween.start()
 	
 	pass

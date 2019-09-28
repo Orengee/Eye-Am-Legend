@@ -1,7 +1,5 @@
 extends TextureButton
 
-onready var world = preload("res://World.tscn")
-
 func _on_TextureButton_pressed():
 	
 	

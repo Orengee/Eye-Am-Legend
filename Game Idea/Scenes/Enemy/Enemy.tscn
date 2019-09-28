@@ -14,19 +14,19 @@
 [ext_resource path="res://Resources/Enemies/bouncing_eye5.png" type="Texture" id=12]
 [ext_resource path="res://Resources/Enemies/bouncing_eye4.png" type="Texture" id=13]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.4465, 20.6385 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 17.9527, 17.7841 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 21.1545, 17.7186 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20.8781, 15.5067 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "default"
 length = 0.4
 loop = true
@@ -60,6 +60,7 @@ tracks/1/keys = {
 "Enemy",
 ]]
 script = ExtResource( 1 )
+speed = 130.0
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.0666667, 0.0666667, 0.0666667, 0.329412 )
@@ -77,7 +78,7 @@ visible = false
 
 [node name="Collision" parent="Hurtbox" index="0"]
 position = Vector2( 0, 1.75193 )
-shape = SubResource( 7 )
+shape = SubResource( 1 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
@@ -87,7 +88,7 @@ target_group = "Player"
 
 [node name="Collision" parent="Hitbox" index="0"]
 position = Vector2( -0.583984, 6.71574 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Health Component" parent="." instance=ExtResource( 6 )]
 maximum_value = 13
@@ -101,11 +102,11 @@ visible = false
 
 [node name="Collision" parent="Knockback Reciever" index="0"]
 position = Vector2( 0.291992, 3.50387 )
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -1.52588e-005, 6.57003 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="SpawnOnExit" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2, 0 )
@@ -123,7 +124,7 @@ object_path = "res://Tools/Temporary Sound FX/Temp Sound FX.tscn"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
 playback_speed = 0.5
-anims/default = SubResource( 6 )
+anims/default = SubResource( 5 )
 
 [connection signal="tree_exiting" from="." to="." method="_on_Enemy_tree_exiting"]
 
