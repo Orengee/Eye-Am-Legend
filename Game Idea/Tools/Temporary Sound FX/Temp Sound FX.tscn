@@ -9,6 +9,7 @@ stream = ExtResource( 1 )
 volume_db = -0.5
 autoplay = true
 script = ExtResource( 2 )
+volume = -1.0
 
 [node name="Temporary" parent="." instance=ExtResource( 3 )]
 duration = 1.0

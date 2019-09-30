@@ -19,9 +19,11 @@ extents = Vector2( 7, 7 )
 
 [node name="Nail" type="Area2D"]
 script = ExtResource( 1 )
+piercing = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -1.5708
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="Bullet Trail" parent="Sprite" instance=ExtResource( 3 )]

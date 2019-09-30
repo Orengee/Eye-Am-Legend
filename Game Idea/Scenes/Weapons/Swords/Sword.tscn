@@ -41,7 +41,6 @@ charge_time = 0.65
 swing_time = 0.06
 
 [node name="Origin" type="Position2D" parent="."]
-editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="Origin"]
 position = Vector2( 10, 0 )
@@ -60,7 +59,7 @@ position = Vector2( 70, 0 )
 editor/display_folded = true
 position = Vector2( 58, 0 )
 rotation = 1.5708
-damage = 20
+damage = 11
 target_group = "Enemy"
 
 [node name="Collision" parent="Origin/Hitbox" index="0"]
@@ -105,10 +104,10 @@ volume = 6.0
 [node name="Cooldown Component" parent="." instance=ExtResource( 9 )]
 duration = 0.3
 
-[connection signal="swing" from="." to="SFX" method="_play"]
 [connection signal="swing" from="." to="Camera Shake" method="start"]
-[connection signal="swing" from="." to="Origin/Hitbox" method="enable"]
 [connection signal="swing" from="." to="Origin/Knockback Sender" method="enable"]
+[connection signal="swing" from="." to="Origin/Hitbox" method="enable"]
+[connection signal="swing" from="." to="SFX" method="_play"]
 [connection signal="cooldown_finished" from="Cooldown Component" to="." method="_on_Cooldown_Component_cooldown_finished"]
 
 [editable path="Origin/Hitbox"]

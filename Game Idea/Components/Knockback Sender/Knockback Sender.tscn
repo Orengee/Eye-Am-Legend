@@ -11,3 +11,4 @@ script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+

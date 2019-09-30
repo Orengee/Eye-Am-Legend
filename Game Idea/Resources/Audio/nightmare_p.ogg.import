@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/nightmare_p.ogg-7b27e383792e0c7da82fa91ceb84f975.oggstr"
+
+[deps]
+
+source_file="res://Resources/Audio/nightmare_p.ogg"
+dest_files=[ "res://.import/nightmare_p.ogg-7b27e383792e0c7da82fa91ceb84f975.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=1.6

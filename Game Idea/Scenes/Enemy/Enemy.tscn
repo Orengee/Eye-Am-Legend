@@ -83,7 +83,7 @@ shape = SubResource( 1 )
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 visible = false
-damage = 10
+damage = 20
 target_group = "Player"
 
 [node name="Collision" parent="Hitbox" index="0"]
@@ -91,8 +91,8 @@ position = Vector2( -0.583984, 6.71574 )
 shape = SubResource( 2 )
 
 [node name="Health Component" parent="." instance=ExtResource( 6 )]
-maximum_value = 15
-value = 15
+maximum_value = 10
+value = 10
 
 [node name="Death Component" parent="." instance=ExtResource( 7 )]
 

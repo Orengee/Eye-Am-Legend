@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var maximum_speed = 135
-var maximum_sprinting_speed = 220
+var maximum_sprinting_speed = 210
 var speed_weight = 0.3
 var tilt_angle = 10
 var tilt_weight = 0.1
@@ -31,6 +31,7 @@ onready var skill = get_node("Skill")
 
 onready var regular_music = preload("res://Resources/Audio/gameplay1 (1).ogg")
 onready var nightmare_music = preload("res://Resources/Audio/nightmare.ogg")
+onready var nightmare_music_passive = preload("res://Resources/Audio/nightmare_p.ogg")
 var music_1_playing = true
 
 
@@ -81,9 +82,10 @@ func _ready():
 	skill.add_child(skill_node)
 	
 	if(Settings.nightmare == true):
-		Settings.MUSIC_VOLUME *= 2.5
+		Settings.MUSIC_VOLUME *= 1.5
 		music_player.stream = nightmare_music
-		music_player_2.playing = false
+		music_player_2.stream = nightmare_music_passive
+		
 	else:
 		Settings.MUSIC_VOLUME *= 1
 		music_player.stream = regular_music
@@ -307,14 +309,14 @@ func music_active():
 
 func fade_out_track(music_node,start_volume):
 	
-	tween.interpolate_property(music_node,"volume",start_volume,-50,5,Tween.TRANS_QUINT,Tween.EASE_IN)
+	tween.interpolate_property(music_node,"volume_db",start_volume,-50,5,Tween.TRANS_QUINT,Tween.EASE_IN)
 	tween.start()
 	
 	pass
 
 func fade_in_track(music_node,final_volume):
 	
-	tween.interpolate_property(music_node,"volume",-50,final_volume,3,Tween.TRANS_CIRC,Tween.EASE_OUT)
+	tween.interpolate_property(music_node,"volume_db",-50,final_volume,3,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	tween.start()
 	
 	pass

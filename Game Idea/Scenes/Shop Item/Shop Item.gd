@@ -1,6 +1,7 @@
 extends Area2D
 
 export(int) var price = 10
+export(bool) var one_time_buy = false
 var times_bought = 0
 
 onready var price_label = get_node("Label")
@@ -37,6 +38,9 @@ func buy(buyer):
 		animate_interaction()
 		emit_signal("bought")
 		emit_signal("upgraded", times_bought)
+		
+		if(one_time_buy == true):
+			queue_free()
 		
 	else:
 		

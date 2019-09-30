@@ -19,6 +19,8 @@ signal value_raised
 signal value_depleted
 signal value_changed
 
+signal maximum_value_changed
+
 signal regen_started
 signal regen_stopped
 
@@ -52,9 +54,9 @@ func raise_value(new_value):
 	var sum = value + new_value
 	
 	if(sum > maximum_value):
-		value = maximum_value
+		set_value(maximum_value)
 	else:
-		value = sum
+		set_value(sum)
 	
 	emit_signal("value_raised", sum)
 	
@@ -67,11 +69,11 @@ func lower_value(new_value):
 	var difference = value - new_value
 	
 	if(difference <= 0):
-		value = 0
+		set_value(0)
 		
 		emit_signal("value_depleted")
 	else:
-		value = difference
+		set_value(difference)
 	
 	emit_signal("value_lowered", difference)
 	
@@ -80,6 +82,13 @@ func lower_value(new_value):
 	
 	pass
 
+
+func raise_maximum_value(new_value):
+	
+	maximum_value += new_value
+	emit_signal("maximum_value_changed", maximum_value)
+	
+	pass
 
 
 func regen():

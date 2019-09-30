@@ -7,6 +7,9 @@ var targets_hit = 0
 export(int) var piercing = 1
 export(int) var speed_range = 50
 onready var hitbox = get_node("Hitbox")
+onready var hit_effect = preload("res://Particles/Hit Effect.tscn")
+
+
 
 func _ready():
 	
@@ -36,7 +39,19 @@ func move(delta):
 	pass
 
 
+func create_hit_effect():
+	
+	var hit_effect_instance = hit_effect.instance()
+	hit_effect_instance.global_position = self.global_position
+	hit_effect_instance.z_index += 1
+	Global.world.add_child(hit_effect_instance)
+	
+	pass
+
+
 func on_body_entered(body):
+	
+	create_hit_effect()
 	
 	if(body.is_in_group("Wall")):
 		queue_free()

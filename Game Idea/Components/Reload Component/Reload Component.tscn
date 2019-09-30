@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Components/Reload Component/Reload Component.gd" type="Script" id=1]
+[ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/Audio/reload (1).wav" type="AudioStream" id=3]
 
 [node name="Reload Component" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,3 +16,9 @@ margin_top = -50.0
 margin_right = 31.0
 margin_bottom = -35.0
 max_value = 1.0
+
+[node name="SFX" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 3 )
+volume_db = -1.0
+volume = -1.0
+

@@ -61,7 +61,7 @@ tracks/1/keys = {
 ]]
 script = ExtResource( 1 )
 speed = 240.0
-MAX_FORCE = 0.05
+MAX_FORCE = 0.04
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.0666667, 0.0666667, 0.0666667, 0.329412 )
@@ -85,7 +85,7 @@ shape = SubResource( 1 )
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 visible = false
-damage = 10
+damage = 20
 target_group = "Player"
 
 [node name="Collision" parent="Hitbox" index="0"]

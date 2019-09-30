@@ -1,40 +1,36 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Ground Map.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Shop Item/Health Item/Health Item.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tools/Health Bar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Resources/health_bar_bottom_1.png" type="Texture" id=7]
-[ext_resource path="res://Resources/health_bar_middle.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/UI/Wave Counter/Wave Counter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/UI/Money Counter/Money Counter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Menus/Pause.gd" type="Script" id=11]
-[ext_resource path="res://Resources/manaspc.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://Scenes/UI/Ammo Counter/Ammo Counter.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/UI/Nuke Counter/Nuke Counter.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/UI/Upgrade Icon/Upgrade Icon.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Resources/UI Elements/speed_up_icon.png" type="Texture" id=16]
-[ext_resource path="res://Resources/UI Elements/reload_up_icon.png" type="Texture" id=17]
-[ext_resource path="res://Supply Drop Countdown.gd" type="Script" id=18]
-[ext_resource path="res://Tools/Crosshair/Crosshair.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Resources/8crosshair.png" type="Texture" id=20]
-[ext_resource path="res://Wave Manager/Wave Manager.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Tools/Round Manager.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Scenes/Weapon Pickup/Weapon Pickup.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scenes/UI/Player Health Bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/UI/Wave Counter/Wave Counter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/UI/Money Counter/Money Counter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menus/Pause.gd" type="Script" id=9]
+[ext_resource path="res://Resources/manaspc.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Scenes/UI/Ammo Counter/Ammo Counter.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Supply Drop Countdown.gd" type="Script" id=12]
+[ext_resource path="res://Tools/Crosshair/Crosshair.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Resources/8crosshair.png" type="Texture" id=14]
+[ext_resource path="res://Wave Manager/Wave Manager.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Tools/Round Manager.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Weapon Pickup/Weapon Pickup.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Shop Item/Sprint Up Item/Sprint Up Item.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Shop Item/Health Up Item/Health Up Item.tscn" type="PackedScene" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-font_data = ExtResource( 12 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
 outline_size = 2
 outline_color = Color( 0.164706, 0.164706, 0.164706, 1 )
-font_data = ExtResource( 12 )
+font_data = ExtResource( 10 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -64,9 +60,6 @@ position = Vector2( 482.024, 366.351 )
 editor/display_folded = true
 position = Vector2( 1050.39, 789.163 )
 
-[node name="Camera Pivot" parent="Player" index="12"]
-editor/display_folded = false
-
 [node name="Camera" parent="Player/Camera Pivot" index="0"]
 limit_left = -480
 limit_top = -150
@@ -74,23 +67,16 @@ limit_right = 2525
 limit_bottom = 1700
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
-[node name="Health Bar" parent="CanvasLayer" instance=ExtResource( 6 )]
-margin_left = 93.8731
-margin_top = 6.70868
-margin_right = 341.873
-margin_bottom = 53.7087
-texture_under = ExtResource( 7 )
-texture_progress = ExtResource( 8 )
+[node name="Player Health Bar" parent="CanvasLayer" instance=ExtResource( 6 )]
 
-[node name="Wave Counter" parent="CanvasLayer" instance=ExtResource( 9 )]
+[node name="Wave Counter" parent="CanvasLayer" instance=ExtResource( 7 )]
 margin_left = 5.58672
 margin_top = 6.28505
 margin_right = 88.5867
 margin_bottom = 87.285
 
-[node name="Money Counter" parent="CanvasLayer" instance=ExtResource( 10 )]
+[node name="Money Counter" parent="CanvasLayer" instance=ExtResource( 8 )]
 margin_left = 94.917
 margin_top = 55.3992
 margin_right = 204.917
@@ -104,7 +90,7 @@ margin_left = 31.0
 margin_top = 69.0
 margin_right = 85.0
 margin_bottom = 123.0
-script = ExtResource( 11 )
+script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause"]
 margin_left = 354.539
@@ -115,45 +101,11 @@ custom_fonts/font = SubResource( 1 )
 text = "- PAUSED -
 "
 
-[node name="Ammo Counter" parent="CanvasLayer" instance=ExtResource( 13 )]
+[node name="Ammo Counter" parent="CanvasLayer" instance=ExtResource( 11 )]
 margin_left = 9.02502
 margin_top = 92.9578
 margin_right = 42.025
 margin_bottom = 141.958
-
-[node name="Nuke Counter" parent="CanvasLayer" instance=ExtResource( 14 )]
-margin_left = 4.07255
-margin_top = 153.128
-margin_right = 43.0725
-margin_bottom = 202.128
-
-[node name="Upgrade Icon Container" type="HBoxContainer" parent="CanvasLayer"]
-editor/display_folded = true
-margin_left = 960.958
-margin_top = 556.26
-margin_right = 1049.96
-margin_bottom = 594.26
-custom_constants/separation = -94
-
-[node name="Attack Up Icon" parent="CanvasLayer/Upgrade Icon Container" instance=ExtResource( 15 )]
-editor/display_folded = true
-margin_right = 32.0
-margin_bottom = 38.0
-stretch_mode = 0
-
-[node name="Speed Up Icon" parent="CanvasLayer/Upgrade Icon Container" instance=ExtResource( 15 )]
-editor/display_folded = true
-margin_left = -62.0
-margin_right = -30.0
-margin_bottom = 38.0
-texture = ExtResource( 16 )
-
-[node name="Reload Speed Up Icon" parent="CanvasLayer/Upgrade Icon Container" instance=ExtResource( 15 )]
-editor/display_folded = true
-margin_left = -124.0
-margin_right = -92.0
-margin_bottom = 38.0
-texture = ExtResource( 17 )
 
 [node name="Supply Drop Countdown" type="Label" parent="CanvasLayer"]
 margin_left = 349.0
@@ -163,16 +115,16 @@ margin_bottom = 54.0
 custom_fonts/font = SubResource( 2 )
 text = "Supply Drop in: 0"
 valign = 1
-script = ExtResource( 18 )
+script = ExtResource( 12 )
 
-[node name="Crosshair" parent="CanvasLayer" instance=ExtResource( 19 )]
+[node name="Crosshair" parent="CanvasLayer" instance=ExtResource( 13 )]
 pause_mode = 2
 scale = Vector2( 2, 2 )
-texture = ExtResource( 20 )
+texture = ExtResource( 14 )
 
-[node name="Wave Manager" parent="." instance=ExtResource( 21 )]
+[node name="Wave Manager" parent="." instance=ExtResource( 15 )]
 editor/display_folded = true
-spawn_limit = 35
+spawn_limit = 38
 spawn_box_width = 20
 spawn_box_height = 20
 
@@ -230,13 +182,13 @@ position = Vector2( 568.094, 1483.76 )
 [node name="Spawn Position 18" parent="Wave Manager/Spawn Positions" index="17"]
 position = Vector2( 1095.57, 1510.32 )
 
-[node name="??????" parent="." instance=ExtResource( 22 )]
+[node name="??????" parent="." instance=ExtResource( 16 )]
 
-[node name="Weapon Slot Machine" parent="." instance=ExtResource( 23 )]
+[node name="Weapon Slot Machine" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1569.45, 359.157 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="Supply Drop Handler" parent="." instance=ExtResource( 24 )]
+[node name="Supply Drop Handler" parent="." instance=ExtResource( 18 )]
 editor/display_folded = true
 supply_drop_interval = 20
 
@@ -249,16 +201,23 @@ position = Vector2( 1675.66, 767.724 )
 [node name="Spawn Location3" parent="Supply Drop Handler/Spawn Locations" index="2"]
 position = Vector2( 1060.02, 361.762 )
 
-[node name="Weapon Pickup" parent="." instance=ExtResource( 25 )]
+[node name="Weapon Pickup" parent="." instance=ExtResource( 19 )]
 position = Vector2( 1064.58, 1050.05 )
 
-[connection signal="nuke_used" from="Player" to="CanvasLayer/Nuke Counter" method="update_amount"]
+[node name="Sprint Up Item" parent="." instance=ExtResource( 20 )]
+position = Vector2( 737.521, 829.265 )
+price = 30
+
+[node name="Health Up Item" parent="." instance=ExtResource( 21 )]
+position = Vector2( 800.527, 830.697 )
+health_increase = 20
+
 [connection signal="weapon_loaded" from="Player" to="CanvasLayer/Ammo Counter" method="update_all"]
 [connection signal="ammo_changed" from="Player/Weapon" to="CanvasLayer/Ammo Counter" method="update_total_ammo"]
 [connection signal="round_used" from="Player/Weapon" to="CanvasLayer/Ammo Counter" method="update_clip"]
 [connection signal="value_changed" from="Player/Wallet Component" to="CanvasLayer/Money Counter" method="value_changed"]
-[connection signal="value_lowered" from="Player/Health Component" to="CanvasLayer/Health Bar" method="on_health_changed"]
-[connection signal="value_raised" from="Player/Health Component" to="CanvasLayer/Health Bar" method="on_health_changed"]
+[connection signal="maximum_value_changed" from="Player/Health Component" to="CanvasLayer/Player Health Bar" method="update_max_health"]
+[connection signal="value_changed" from="Player/Health Component" to="CanvasLayer/Player Health Bar" method="on_health_changed"]
 [connection signal="wave_started" from="Wave Manager" to="CanvasLayer/Wave Counter" method="update_wave"]
 [connection signal="countdown_updated" from="Supply Drop Handler" to="CanvasLayer/Supply Drop Countdown" method="update_countdown"]
 

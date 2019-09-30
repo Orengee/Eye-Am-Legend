@@ -6,11 +6,11 @@
 
 [node name="Explosion SFX" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
-volume_db = -3.0
+volume_db = -8.0
 pitch_scale = 1.2
 autoplay = true
 script = ExtResource( 2 )
-volume = -1.0
+volume = -8.0
 
 [node name="Temporary" parent="." instance=ExtResource( 3 )]
 duration = 1.5

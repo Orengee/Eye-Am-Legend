@@ -6,8 +6,10 @@
 
 [node name="Coin SFX" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
+volume_db = -3.0
 autoplay = true
 script = ExtResource( 2 )
+volume = -3.0
 
 [node name="Temporary" parent="." instance=ExtResource( 3 )]
 duration = 0.5

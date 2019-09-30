@@ -1,6 +1,6 @@
 extends Node
 
-var MUSIC_VOLUME = 1
-var SFX_VOLUME = 1
+var MUSIC_VOLUME = 0
+var SFX_VOLUME = 0
 
 var nightmare = true

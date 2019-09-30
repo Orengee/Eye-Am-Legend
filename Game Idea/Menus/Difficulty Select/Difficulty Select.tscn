@@ -10,7 +10,7 @@
 [ext_resource path="res://Resources/nightmare_difficulty_0001.png" type="Texture" id=8]
 [ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Resources/Audio/spawn.wav" type="AudioStream" id=11]
+[ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -119,8 +119,9 @@ shake_duration = 0.3
 
 [node name="SFX" parent="." instance=ExtResource( 10 )]
 stream = ExtResource( 11 )
-volume_db = -1.0
-volume = -1.0
+volume_db = -3.0
+pitch_scale = 0.6
+volume = -3.0
 
 [node name="Camera" type="Camera2D" parent="." groups=[
 "Camera",

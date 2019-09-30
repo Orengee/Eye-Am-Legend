@@ -23,6 +23,15 @@ func _physics_process(delta):
 
 
 
+func impulse_knockback(from_pos, force):
+	
+	var knock_dir = self.global_position - from_pos
+	velocity = knock_dir.normalized() * force
+	
+	pass
+
+
+
 func on_area_entered(area):
 	
 	if(area.is_in_group("Knockback Sender")):

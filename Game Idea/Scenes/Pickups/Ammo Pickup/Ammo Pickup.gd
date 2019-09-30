@@ -9,6 +9,7 @@ var shell_sprite_1 = load("res://Resources/pistol_shell.png")
 var shell_sprite_2 = load("res://Resources/shotgun_shell.png")
 
 onready var temp_sfx = preload("res://Tools/Temporary Sound FX/Weapon Pickup.tscn")
+onready var sound = preload("res://Resources/Audio/pickup.wav")
 onready var tween = get_node("Tween")
 
 func _ready():
@@ -50,6 +51,8 @@ func _on_Ammo_Pickup_body_entered(body):
 	if(body.is_in_group("Player")):
 		
 		var sfx_instance = temp_sfx.instance()
+		sfx_instance.stream = sound
+		sfx_instance.volume -= 4
 		Global.world.add_child(sfx_instance)
 		
 		body.ammo_pickup(amount)

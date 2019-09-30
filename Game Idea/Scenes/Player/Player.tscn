@@ -246,6 +246,8 @@ shape = SubResource( 3 )
 [node name="Wallet Component" parent="." instance=ExtResource( 9 )]
 
 [node name="Health Component" parent="." instance=ExtResource( 10 )]
+maximum_value = 100
+value = 100
 
 [node name="Player Death Component" parent="." instance=ExtResource( 11 )]
 
@@ -265,6 +267,8 @@ limit_left = -300
 limit_top = -100
 limit_right = 1450
 limit_bottom = 900
+smoothing_enabled = true
+smoothing_speed = 6.0
 drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
@@ -284,14 +288,15 @@ script = ExtResource( 14 )
 shape = SubResource( 4 )
 
 [node name="Music" parent="." instance=ExtResource( 15 )]
+pause_mode = 2
 stream = ExtResource( 16 )
 volume_db = 1.0
 max_distance = 3000.0
 
 [node name="Music2" parent="." instance=ExtResource( 15 )]
+pause_mode = 2
 stream = ExtResource( 17 )
 volume_db = -53.529
-volume = -50.0
 
 [node name="SFX" parent="." instance=ExtResource( 18 )]
 stream = ExtResource( 19 )

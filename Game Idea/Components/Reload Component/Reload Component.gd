@@ -12,6 +12,9 @@ var clip_node
 onready var timer = get_node("Timer")
 onready var progress_bar = get_node("ProgressBar")
 
+onready var sound_fx = get_node("SFX")
+
+
 signal reload_started
 signal reload_complete
 
@@ -63,6 +66,7 @@ func _process(delta):
 func start():
 	
 	emit_signal("reload_started")
+	sound_fx._play()
 	reloading = true
 	timer.start()
 	

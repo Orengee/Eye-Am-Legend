@@ -7,12 +7,12 @@
 [ext_resource path="res://Resources/UI Elements/play_button_hover.png" type="Texture" id=5]
 [ext_resource path="res://Menus/Title Screen/TextureButton.gd" type="Script" id=6]
 [ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Resources/Audio/spawn.wav" type="AudioStream" id=8]
+[ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=8]
 [ext_resource path="res://Resources/UI Elements/settings_button_default.png" type="Texture" id=9]
 [ext_resource path="res://Resources/UI Elements/settings_button_pressed.png" type="Texture" id=10]
 [ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=11]
 [ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=12]
-[ext_resource path="res://Resources/Audio/title (1).ogg" type="AudioStream" id=13]
+[ext_resource path="res://Resources/Audio/title2.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Eye Man Dummy/Eye Man Dummy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Resources/Player_Idle.tres" type="Animation" id=15]
 [ext_resource path="res://Resources/shadow.png" type="Texture" id=16]
@@ -89,7 +89,6 @@ format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 13, 0, 6, 13, 0, 7, 13, 0, 8, 1, 0, 9, 13, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 13, 0, 14, 13, 0, 15, 14, 0, 65536, 15, 0, 65537, 33, 0, 65538, 31, 0, 65539, 36, 0, 65540, 29, 0, 65541, 36, 0, 65542, 31, 0, 65543, 29, 0, 65544, 33, 0, 65545, 31, 0, 65546, 31, 0, 65547, 35, 0, 65548, 29, 0, 65549, 33, 0, 65550, 31, 0, 65551, 5, 0, 131072, 3, 0, 131073, 31, 0, 131074, 29, 0, 131075, 0, 0, 131076, 1, 0, 131077, 14, 0, 131078, 31, 0, 131079, 37, 0, 131080, 37, 0, 131081, 37, 0, 131082, 0, 0, 131083, 13, 0, 131084, 2, 0, 131085, 31, 0, 131086, 33, 0, 131087, 5, 0, 196608, 3, 0, 196609, 31, 0, 196610, 31, 0, 196611, 3, 0, 196612, 4, 0, 196613, 5, 0, 196614, 41, 0, 196615, 41, 0, 196616, 41, 0, 196617, 41, 0, 196618, 15, 0, 196619, 16, 0, 196620, 5, 0, 196621, 29, 0, 196622, 33, 0, 196623, 17, 0, 262144, 15, 0, 262145, 33, 0, 262146, 40, 0, 262147, 6, 0, 262148, 7, 0, 262149, 8, 0, 262150, 41, 0, 262151, 41, 0, 262152, 41, 0, 262153, 41, 0, 262154, 18, 0, 262155, 19, 0, 262156, 20, 0, 262157, 37, 0, 262158, 29, 0, 262159, 5, 0, 327680, 3, 0, 327681, 35, 0, 327682, 30, 0, 327683, 21, 0, 327684, 22, 0, 327685, 23, 0, 327686, 37, 0, 327687, 39, 0, 327688, 41, 0, 327689, 40, 0, 327690, 9, 0, 327691, 22, 0, 327692, 23, 0, 327693, 39, 0, 327694, 30, 0, 327695, 5, 0, 393216, 3, 0, 393217, 35, 0, 393218, 29, 0, 393219, 39, 0, 393220, 29, 0, 393221, 30, 0, 393222, 29, 0, 393223, 31, 0, 393224, 31, 0, 393225, 29, 0, 393226, 30, 0, 393227, 39, 0, 393228, 31, 0, 393229, 32, 0, 393230, 31, 0, 393231, 17, 0, 458752, 3, 0, 458753, 33, 0, 458754, 31, 0, 458755, 33, 0, 458756, 31, 0, 458757, 33, 0, 458758, 33, 0, 458759, 35, 0, 458760, 33, 0, 458761, 33, 0, 458762, 29, 0, 458763, 31, 0, 458764, 33, 0, 458765, 33, 0, 458766, 33, 0, 458767, 5, 0, 524288, 18, 0, 524289, 7, 0, 524290, 7, 0, 524291, 7, 0, 524292, 7, 0, 524293, 7, 0, 524294, 7, 0, 524295, 7, 0, 524296, 7, 0, 524297, 7, 0, 524298, 7, 0, 524299, 7, 0, 524300, 7, 0, 524301, 7, 0, 524302, 7, 0, 524303, 20, 0, 589824, 9, 0, 589825, 22, 0, 589826, 22, 0, 589827, 10, 0, 589828, 22, 0, 589829, 22, 0, 589830, 10, 0, 589831, 10, 0, 589832, 10, 0, 589833, 10, 0, 589834, 10, 0, 589835, 22, 0, 589836, 22, 0, 589837, 10, 0, 589838, 22, 0, 589839, 11, 0 )
 
 [node name="Start Game" type="TextureButton" parent="."]
-editor/display_folded = true
 margin_left = 415.666
 margin_top = 344.696
 margin_right = 610.666
@@ -110,9 +109,9 @@ one_shot = true
 
 [node name="Button Sound" type="AudioStreamPlayer2D" parent="Start Game"]
 stream = ExtResource( 8 )
+pitch_scale = 0.6
 
 [node name="Settings" type="TextureButton" parent="."]
-editor/display_folded = true
 margin_left = 395.0
 margin_top = 436.0
 margin_right = 632.0
@@ -130,6 +129,7 @@ one_shot = true
 [node name="Button Sound" type="AudioStreamPlayer2D" parent="Settings"]
 position = Vector2( 0, -107.469 )
 stream = ExtResource( 8 )
+pitch_scale = 0.6
 
 [node name="Camera Shake" parent="Settings" instance=ExtResource( 7 )]
 shake_power = 3.0

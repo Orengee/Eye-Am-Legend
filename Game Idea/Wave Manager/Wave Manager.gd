@@ -17,7 +17,8 @@ onready var explosion = preload("res://Particles/Explosion.tscn")
 onready var grunt = preload("res://Scenes/Enemy/Enemy.tscn")
 onready var brute = preload("res://Scenes/Brute/Brute.tscn")
 onready var flyer = preload("res://Scenes/Flyer/Flyer.tscn")
-
+onready var sfx = get_node("SFX")
+onready var round_notifier = preload("res://Round Notifier.tscn")
 
 signal wave_started
 signal wave_ended
@@ -85,6 +86,15 @@ func _ready():
 	
 	flyer_timer.wait_time = flyer_spawn_interval
 	
+	
+	var t = Timer.new()
+	t.set_wait_time(6.1)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	
 	start_wave()
 	
 	pass
@@ -111,24 +121,28 @@ func get_random_spawn():
 
 func start_wave():
 	
+	
+	sfx._play()
 	Global.enemies_defeated = 0
 	
 	if(wave > 0):
-		if(Settings.nightmare == false):
-			Global.player.music_active()
+		Global.player.music_active()
 	
 	#Update Stats
 	wave += 1
+	var round_notifier_instance = round_notifier.instance()
+	round_notifier_instance.get_node("Label").text = "ROUND " + str(wave)
+	Global.world.add_child(round_notifier_instance)
 	
 	if(Settings.nightmare == false):
 	
 		health_bonus += 1
-		speed_bonus += 5
+		speed_bonus = clamp(speed_bonus + 5,0,60)
 		grunts_per_spawn += 1
 		grunts_per_wave += 5
 	else:
 		health_bonus += 6
-		speed_bonus += 5
+		speed_bonus += clamp(speed_bonus + 5,0,60)
 		grunts_per_wave += 9
 		grunts_per_spawn += 1
 	
@@ -145,6 +159,7 @@ func start_wave():
 		flyers_per_wave += 1
 		
 		pass
+	
 	enemies_per_wave = grunts_per_wave + flyers_per_wave
 	enemies_spawned = 0
 	
@@ -165,10 +180,8 @@ func start_wave():
 
 
 func stop_wave():
-	
-	if(Settings.nightmare == false):
 		
-		Global.player.music_passive()
+	Global.player.music_passive()
 	
 	grunt_timer.stop()
 	round_start_timer.start()
@@ -204,46 +217,12 @@ func spawn_grunt():
 				health_component.maximum_value = health_component.value
 				grunt_instance.z_index = 2
 				
-				var explosion_instance = explosion.instance()
-				explosion_instance.global_position = rand_position
+				spawn_effect(rand_position)
 				
 				Global.world.add_child(grunt_instance)
-				Global.world.add_child(explosion_instance)
 				
 				spawned_grunts += 1
 				enemies_spawned += 1
-			
-			
-	pass
-
-func spawn_brute():
-	
-	if(spawned_brute < brutes_per_wave):
-		
-		var spawn_number = brutes_per_spawn
-		
-		if(brutes_per_spawn > brutes_per_wave-spawned_brute):
-			spawn_number = (brutes_per_wave-spawned_brute)
-		
-		for x in spawn_number:
-			
-			#Create grunts and pick random spawn positions
-			
-			var rand_position = get_random_spawn().global_position
-			var grunt_instance = brute.instance()
-			grunt_instance.position = rand_position
-			grunt_instance.speed += speed_bonus
-			grunt_instance.get_node("Health Component").value
-			grunt_instance.z_index = 2
-			
-			var explosion_instance = explosion.instance()
-			explosion_instance.global_position = rand_position
-			
-			Global.world.add_child(grunt_instance)
-			Global.world.add_child(explosion_instance)
-			
-			spawned_brute += 1
-			enemies_spawned += 1
 			
 			
 	pass
@@ -276,16 +255,23 @@ func spawn_flyer():
 				health_component.maximum_value = health_component.value
 				grunt_instance.z_index = 2
 				
-				var explosion_instance = explosion.instance()
-				explosion_instance.global_position = rand_position
+				spawn_effect(rand_position)
 				
 				Global.world.add_child(grunt_instance)
-				Global.world.add_child(explosion_instance)
 				
 				spawned_flyer += 1
 				enemies_spawned += 1
 			
 			
+	pass
+
+
+func spawn_effect(position):
+	
+	var explosion_instance = explosion.instance()
+	explosion_instance.sfx_volume -= 12
+	explosion_instance.global_position = position
+	
 	pass
 
 
@@ -296,16 +282,6 @@ func on_grunt_timer_timeout():
 	if(spawned_grunts < grunts_per_wave):
 		grunt_timer.start()
 	
-	pass
-
-
-func on_brute_timer_timeout():
-	
-	
-	spawn_brute()
-	if(spawned_brute < brutes_per_wave):
-		brute_timer.start()
-		
 	pass
 
 

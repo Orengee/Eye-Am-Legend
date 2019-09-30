@@ -72,7 +72,6 @@ texture = ExtResource( 2 )
 position = Vector2( 1.5359, 0.290455 )
 scale = Vector2( 0.491229, 0.464477 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="Class 2" type="Sprite" parent="."]
@@ -85,7 +84,6 @@ texture = ExtResource( 2 )
 position = Vector2( 1.5359, 0.290455 )
 scale = Vector2( 0.491229, 0.464477 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 
 [node name="Class 3" type="Sprite" parent="."]
@@ -98,7 +96,7 @@ texture = ExtResource( 2 )
 position = Vector2( 1.5359, 0.290455 )
 scale = Vector2( 0.491229, 0.464477 )
 frames = SubResource( 3 )
-frame = 12
+frame = 6
 playing = true
 
 [node name="Tween" type="Tween" parent="."]

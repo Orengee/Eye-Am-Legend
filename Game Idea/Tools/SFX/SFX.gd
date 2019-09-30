@@ -4,7 +4,8 @@ export(float) var volume = 1
 
 func _ready():
 	
-	volume_db = Settings.SFX_VOLUME
+	print(Settings.SFX_VOLUME)
+	volume_db += Settings.SFX_VOLUME
 	
 	pass
 

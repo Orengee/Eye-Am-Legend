@@ -28,7 +28,7 @@ tracks/0/keys = {
 "Pickup",
 ]]
 script = ExtResource( 1 )
-amount = 10
+amount = 20
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.227451, 0.227451, 0.227451, 0.301961 )
