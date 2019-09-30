@@ -131,7 +131,6 @@ func start_wave():
 	#Update Stats
 	wave += 1
 	var round_notifier_instance = round_notifier.instance()
-	round_notifier_instance.get_node("Label").text = "ROUND " + str(wave)
 	Global.world.add_child(round_notifier_instance)
 	
 	if(Settings.nightmare == false):

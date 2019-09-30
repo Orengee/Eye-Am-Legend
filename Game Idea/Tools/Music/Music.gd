@@ -8,13 +8,3 @@ func _ready():
 	volume = volume_db
 	
 	pass
-
-
-func _process(delta):
-	
-	if(get_tree().paused == true):
-		volume_db = volume - 5
-	else:
-		volume_db = volume + 5
-	
-	pass
