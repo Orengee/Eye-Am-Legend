@@ -14,7 +14,24 @@ func _ready():
 	if(self.has_node("Clip Component") == true):
 		clip_component = self.get_node("Clip Component")
 		
-		
+	if(self.has_node("Reload Component") == true):
+		var reload_component = self.get_node("Reload Component")
+		reload_component.reload_time *= Global.reload_multiplier
+		reload_component.timer.wait_time *= Global.reload_multiplier
+		print(reload_component.reload_time)
+	
+	if(self.has_node("Cooldown Component") == true):
+		var cooldown_component = self.get_node("Cooldown Component")
+		cooldown_component.duration *= Global.fire_rate_multiplier
+		cooldown_component.timer.wait_time *= Global.fire_rate_multiplier
+		print(cooldown_component.duration)
+	
+	if(self.has_node("Shooting Component") == true):
+		var shooting_component = self.get_node("Shooting Component")
+		shooting_component.spread *= Global.spread_multiplier
+		print("SPREAD: " + str(shooting_component.spread))
+	
+	
 	pass
 
 func animate_kickback():

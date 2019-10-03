@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Random Shop/Random Shop.gd" type="Script" id=1]
+[ext_resource path="res://Resources/manaspc.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="Random Shop" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Shop Position 1" type="Position2D" parent="."]
+position = Vector2( -64, 0 )
+
+[node name="Shop Position 2" type="Position2D" parent="."]
+
+[node name="Shop Position 3" type="Position2D" parent="."]
+position = Vector2( 64, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -78.0
+margin_top = 21.0
+margin_right = 79.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 1 )
+text = "-Pick One-"
+align = 1
+valign = 1
+
+[connection signal="tree_exiting" from="." to="." method="_on_Random_Shop_tree_exiting"]

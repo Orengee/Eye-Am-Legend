@@ -6,6 +6,7 @@ var times_bought = 0
 
 onready var price_label = get_node("Label")
 onready var tween = get_node("Tween")
+onready var tooltip = get_node("Tooltip")
 var sprite
 
 signal bought
@@ -69,5 +70,20 @@ func on_body_entered(body):
 		buy(body)
 		
 		pass
+	
+	pass
+
+func _on_Shop_Item_mouse_entered():
+	
+	if(tooltip != null):
+		tooltip.visible = true
+	
+	pass
+
+
+func _on_Shop_Item_mouse_exited():
+	
+	if(tooltip != null):
+		tooltip.visible = false
 	
 	pass

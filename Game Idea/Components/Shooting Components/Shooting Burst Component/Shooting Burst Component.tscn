@@ -2,5 +2,8 @@
 
 [ext_resource path="res://Components/Shooting Components/Shooting Burst Component/Shooting Burst Component.gd" type="Script" id=1]
 
-[node name="Shooting Burst Component" type="Node2D"]
+[node name="Shooting Burst Component" type="Node2D" groups=[
+"CShooting",
+]]
 script = ExtResource( 1 )
+

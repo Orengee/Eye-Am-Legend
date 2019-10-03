@@ -13,6 +13,8 @@
 [ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=12]
 
+
+
 [node name="Toaster" type="Node2D"]
 z_index = 1
 script = ExtResource( 1 )

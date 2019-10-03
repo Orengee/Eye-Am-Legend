@@ -19,6 +19,7 @@ onready var brute = preload("res://Scenes/Brute/Brute.tscn")
 onready var flyer = preload("res://Scenes/Flyer/Flyer.tscn")
 onready var sfx = get_node("SFX")
 onready var round_notifier = preload("res://Round Notifier.tscn")
+onready var random_shop = preload("res://Scenes/Random Shop/Random Shop.tscn")
 
 signal wave_started
 signal wave_ended
@@ -159,6 +160,19 @@ func start_wave():
 		
 		pass
 	
+	if(wave % 5 == 0):
+		
+		var shop_instance = random_shop.instance()
+		shop_instance.global_position = $"Shop Location".global_position
+		
+		var explosion_instance = explosion.instance()
+		explosion_instance.global_position = $"Shop Location".global_position
+		
+		Global.world.add_child(shop_instance)
+		Global.world.add_child(explosion_instance)
+		
+		pass
+	
 	enemies_per_wave = grunts_per_wave + flyers_per_wave
 	enemies_spawned = 0
 	
@@ -228,38 +242,36 @@ func spawn_grunt():
 
 
 func spawn_flyer():
-	if(spawned_grunts - Global.enemies_defeated <= spawn_limit):
-		
-		if(spawned_flyer < flyers_per_wave):
+	if(spawned_flyer < flyers_per_wave):
 			
-			var spawn_number = flyers_per_spawn
+		var spawn_number = flyers_per_spawn
 			
-			if(flyers_per_spawn > flyers_per_wave-spawned_flyer):
-				spawn_number = (flyers_per_wave-spawned_flyer)
+		if(flyers_per_spawn > flyers_per_wave-spawned_flyer):
+			spawn_number = (flyers_per_wave-spawned_flyer)
 			
-			for x in spawn_number:
+		for x in spawn_number:
 				
-				#Create grunts and pick random spawn positions
+			#Create grunts and pick random spawn positions
 				
-				var rand_position_location = get_random_spawn().global_position
-				var rand_box_width_offset = rand_range(-spawn_box_width,spawn_box_width)
-				var rand_box_height_offset = rand_range(-spawn_box_height,spawn_box_height)
-				var rand_position = rand_position_location + Vector2(rand_box_width_offset,rand_box_height_offset)
+			var rand_position_location = get_random_spawn().global_position
+			var rand_box_width_offset = rand_range(-spawn_box_width,spawn_box_width)
+			var rand_box_height_offset = rand_range(-spawn_box_height,spawn_box_height)
+			var rand_position = rand_position_location + Vector2(rand_box_width_offset,rand_box_height_offset)
+			
+			var grunt_instance = flyer.instance()
+			grunt_instance.position = rand_position
+			grunt_instance.speed += speed_bonus
+			var health_component = grunt_instance.get_node("Health Component")
+			health_component.value += health_bonus
+			health_component.maximum_value = health_component.value
+			grunt_instance.z_index = 2
 				
-				var grunt_instance = flyer.instance()
-				grunt_instance.position = rand_position
-				grunt_instance.speed += speed_bonus
-				var health_component = grunt_instance.get_node("Health Component")
-				health_component.value += health_bonus
-				health_component.maximum_value = health_component.value
-				grunt_instance.z_index = 2
+			spawn_effect(rand_position)
 				
-				spawn_effect(rand_position)
+			Global.world.add_child(grunt_instance)
 				
-				Global.world.add_child(grunt_instance)
-				
-				spawned_flyer += 1
-				enemies_spawned += 1
+			spawned_flyer += 1
+			enemies_spawned += 1
 			
 			
 	pass

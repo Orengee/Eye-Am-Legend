@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -19,8 +19,6 @@
 [ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/Weapon Pickup/Weapon Pickup.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Shop Item/Sprint Up Item/Sprint Up Item.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/Shop Item/Health Up Item/Health Up Item.tscn" type="PackedScene" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -128,6 +126,9 @@ spawn_limit = 38
 spawn_box_width = 20
 spawn_box_height = 20
 
+[node name="Shop Location" parent="Wave Manager" index="0"]
+position = Vector2( 1050.37, 678.486 )
+
 [node name="Spawn Position 1" parent="Wave Manager/Spawn Positions" index="0"]
 position = Vector2( 282.88, 46.8041 )
 
@@ -203,14 +204,6 @@ position = Vector2( 1060.02, 361.762 )
 
 [node name="Weapon Pickup" parent="." instance=ExtResource( 19 )]
 position = Vector2( 1064.58, 1050.05 )
-
-[node name="Sprint Up Item" parent="." instance=ExtResource( 20 )]
-position = Vector2( 737.521, 829.265 )
-price = 30
-
-[node name="Health Up Item" parent="." instance=ExtResource( 21 )]
-position = Vector2( 800.527, 830.697 )
-health_increase = 20
 
 [connection signal="weapon_loaded" from="Player" to="CanvasLayer/Ammo Counter" method="update_all"]
 [connection signal="ammo_changed" from="Player/Weapon" to="CanvasLayer/Ammo Counter" method="update_total_ammo"]

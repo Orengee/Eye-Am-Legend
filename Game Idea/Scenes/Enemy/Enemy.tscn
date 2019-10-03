@@ -18,13 +18,13 @@
 extents = Vector2( 21.4465, 20.6385 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 17.9527, 17.7841 )
+extents = Vector2( 19.3153, 18.8058 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 21.1545, 17.7186 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 20.8781, 15.5067 )
+extents = Vector2( 15.6663, 15.5067 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "default"
@@ -60,6 +60,7 @@ tracks/1/keys = {
 "Enemy",
 ]]
 script = ExtResource( 1 )
+speed = 160.0
 MAX_FORCE = 0.08
 
 [node name="Shadow" type="Sprite" parent="."]
@@ -73,11 +74,10 @@ position = Vector2( 0.681122, 0 )
 texture = ExtResource( 3 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 visible = false
 
 [node name="Collision" parent="Hurtbox" index="0"]
-position = Vector2( 0, 1.75193 )
+position = Vector2( 1.02168, 3.45475 )
 shape = SubResource( 1 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
@@ -87,7 +87,7 @@ damage = 20
 target_group = "Player"
 
 [node name="Collision" parent="Hitbox" index="0"]
-position = Vector2( -0.583984, 6.71574 )
+position = Vector2( 0.437699, 4.67236 )
 shape = SubResource( 2 )
 
 [node name="Health Component" parent="." instance=ExtResource( 6 )]
@@ -106,7 +106,8 @@ position = Vector2( 0.291992, 3.50387 )
 shape = SubResource( 3 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -1.52588e-005, 6.57003 )
+visible = false
+position = Vector2( 0.340561, 4.52665 )
 shape = SubResource( 4 )
 
 [node name="SpawnOnExit" parent="." instance=ExtResource( 9 )]

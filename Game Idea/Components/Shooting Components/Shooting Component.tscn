@@ -2,7 +2,9 @@
 
 [ext_resource path="res://Components/Shooting Components/Shooting Component.gd" type="Script" id=1]
 
-[node name="Shooting Component" type="Node2D"]
+[node name="Shooting Component" type="Node2D" groups=[
+"CShooting",
+]]
 script = ExtResource( 1 )
 
 [node name="Clip Container" type="Node2D" parent="."]

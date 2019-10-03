@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Tooltip" type="Control"]
+margin_left = -0.301659
+margin_top = 1.39667
+margin_right = 208.698
+margin_bottom = 87.3967
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 1.39667
+margin_top = -1.39667
+margin_right = 209.397
+margin_bottom = 84.6033
+

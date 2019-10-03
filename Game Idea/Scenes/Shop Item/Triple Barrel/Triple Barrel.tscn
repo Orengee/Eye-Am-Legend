@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Shop Item/Triple Barrel/Triple Barrel.gd" type="Script" id=1]
+[ext_resource path="res://Resources/shadow.png" type="Texture" id=2]
+[ext_resource path="res://Resources/triple_barrel.png" type="Texture" id=3]
+[ext_resource path="res://Resources/manaspc.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Audio/buy.wav" type="AudioStream" id=6]
+[ext_resource path="res://Tools/Tooltip/Tooltip.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 15 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[node name="Triple Barrel" type="Area2D"]
+script = ExtResource( 1 )
+price = 180
+one_time_buy = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0.345098, 0.345098, 0.345098, 0.313726 )
+position = Vector2( -0.257024, 9.63843 )
+scale = Vector2( 0.104963, 0.0715494 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -19.6145
+margin_top = 20.8955
+margin_right = 20.3855
+margin_bottom = 34.8955
+custom_fonts/font = SubResource( 2 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="SFX" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 6 )
+
+[node name="Tooltip" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = -104.722
+margin_top = -109.803
+margin_right = 104.278
+margin_bottom = -23.8026
+
+[connection signal="bought" from="." to="SFX" method="_play"]
+[connection signal="mouse_entered" from="." to="." method="_on_Shop_Item_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Shop_Item_mouse_exited"]
