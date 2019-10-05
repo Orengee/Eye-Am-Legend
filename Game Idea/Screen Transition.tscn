@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://transition_shader.tres" type="Material" id=1]
+[ext_resource path="res://Menus/New Title Screen/Transition.gd" type="Script" id=2]
+
+[node name="Transition" type="ColorRect"]
+editor/display_folded = true
+material = ExtResource( 1 )
+margin_left = -118.0
+margin_top = -74.0
+margin_right = 1145.0
+margin_bottom = 669.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+

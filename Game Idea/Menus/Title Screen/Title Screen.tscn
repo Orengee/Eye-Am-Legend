@@ -12,12 +12,12 @@
 [ext_resource path="res://Resources/UI Elements/settings_button_pressed.png" type="Texture" id=10]
 [ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=11]
 [ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=12]
-[ext_resource path="res://Resources/Audio/title2.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Scenes/Eye Man Dummy/Eye Man Dummy.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Resources/Player_Idle.tres" type="Animation" id=15]
-[ext_resource path="res://Resources/shadow.png" type="Texture" id=16]
-[ext_resource path="res://Resources/grenande_launcher_2.png" type="Texture" id=17]
-[ext_resource path="res://Resources/wizard_eye_red.png" type="Texture" id=18]
+[ext_resource path="res://Scenes/Eye Man Dummy/Eye Man Dummy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Resources/Player_Idle.tres" type="Animation" id=14]
+[ext_resource path="res://Resources/shadow.png" type="Texture" id=15]
+[ext_resource path="res://Resources/grenande_launcher_2.png" type="Texture" id=16]
+[ext_resource path="res://Resources/wizard_eye_red.png" type="Texture" id=17]
+[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "float"
@@ -104,7 +104,7 @@ shake_power = 3.0
 shake_duration = 0.2
 
 [node name="Timer" type="Timer" parent="Start Game"]
-wait_time = 0.88
+wait_time = 1.1
 one_shot = true
 
 [node name="Button Sound" type="AudioStreamPlayer2D" parent="Start Game"]
@@ -112,6 +112,7 @@ stream = ExtResource( 8 )
 pitch_scale = 0.6
 
 [node name="Settings" type="TextureButton" parent="."]
+editor/display_folded = true
 margin_left = 395.0
 margin_top = 436.0
 margin_right = 632.0
@@ -123,7 +124,7 @@ expand = true
 script = ExtResource( 12 )
 
 [node name="Timer" type="Timer" parent="Settings"]
-wait_time = 0.88
+wait_time = 1.1
 one_shot = true
 
 [node name="Button Sound" type="AudioStreamPlayer2D" parent="Settings"]
@@ -135,15 +136,10 @@ pitch_scale = 0.6
 shake_power = 3.0
 shake_duration = 0.2
 
-[node name="Menu Music" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 514.469, 196.165 )
-stream = ExtResource( 13 )
-autoplay = true
-
-[node name="Body" parent="." instance=ExtResource( 14 )]
+[node name="Body" parent="." instance=ExtResource( 13 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Player_Idle = ExtResource( 15 )
+anims/Player_Idle = ExtResource( 14 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "Camera",
@@ -161,13 +157,12 @@ __meta__ = {
 [node name="Shadow" type="Sprite" parent="Left Pedestal"]
 modulate = Color( 0.133333, 0.133333, 0.133333, 0.345098 )
 position = Vector2( 0, 21.48 )
-scale = Vector2( 0.164067, 0.056689 )
-texture = ExtResource( 16 )
+scale = Vector2( 0.174, 0.06 )
+texture = ExtResource( 15 )
 
 [node name="Launcher" type="Sprite" parent="Left Pedestal"]
-position = Vector2( 0, -1.65549 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 
 [node name="Right Pedestal" type="Node2D" parent="."]
 editor/display_folded = true
@@ -179,16 +174,19 @@ __meta__ = {
 [node name="Shadow" type="Sprite" parent="Right Pedestal"]
 modulate = Color( 0.133333, 0.133333, 0.133333, 0.345098 )
 position = Vector2( 0, 40 )
-scale = Vector2( 0.164067, 0.056689 )
-texture = ExtResource( 16 )
+scale = Vector2( 0.174, 0.06 )
+texture = ExtResource( 15 )
 
 [node name="Enemy" type="Sprite" parent="Right Pedestal"]
-position = Vector2( 0, -1.65549 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 18 )
+texture = ExtResource( 17 )
 
 [node name="Pedestal Player" type="AnimationPlayer" parent="."]
 anims/float = SubResource( 1 )
+
+[node name="Transition" parent="." instance=ExtResource( 18 )]
+fade_out_time = 0.8
+fade_in_time = 0.8
 
 [connection signal="pressed" from="Start Game" to="Start Game" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Start Game/Timer" to="Start Game" method="_on_Timer_timeout"]

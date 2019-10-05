@@ -23,6 +23,7 @@ run/main_scene="res://Menus/Title Screen/Title Screen.tscn"
 Global="*res://Global.gd"
 Settings="*res://Settings.gd"
 CLASS_DATA="*res://CLASS_DATA.gd"
+MenuMusic="*res://Menu Music.tscn"
 
 [display]
 

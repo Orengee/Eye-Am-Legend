@@ -4,12 +4,23 @@ onready var camera_shake = get_node("Camera Shake")
 onready var transition_timer = get_node("Transition Timer")
 onready var SFX = get_node("SFX")
 
+func _ready():
+	
+	$Transition.cutoff = 1.0
+	$Transition.animate_fade_in()
+	
+	pass
+
 func load_normal_mode():
+	
+	$Transition.animate_fade_out()
 	Settings.nightmare = false
 	button_press()
 	transition_timer.start()
 
 func load_nightmare_mode():
+	
+	$Transition.animate_fade_out()
 	Settings.nightmare = true
 	button_press()
 	transition_timer.start()

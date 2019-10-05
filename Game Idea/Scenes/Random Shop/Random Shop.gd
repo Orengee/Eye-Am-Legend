@@ -18,6 +18,8 @@ onready var shop_position_3 = get_node("Shop Position 3")
 
 func _ready():
 	
+	print(shop_position_1.global_position)
+	
 	randomize()
 	
 	#Pick 3 random shop items (none are duplicates)
@@ -51,13 +53,6 @@ func _ready():
 
 func on_shop_item_bought():
 	
-	queue_free()
-	
-	pass
-
-
-func _on_Random_Shop_tree_exiting():
-	
 	var explosion_1 = explosion.instance()
 	var explosion_2 = explosion.instance()
 	var explosion_3 = explosion.instance()
@@ -70,4 +65,7 @@ func _on_Random_Shop_tree_exiting():
 	Global.world.add_child(explosion_2)
 	Global.world.add_child(explosion_3)
 	
+	queue_free()
+	
 	pass
+

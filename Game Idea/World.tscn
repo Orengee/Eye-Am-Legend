@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -14,10 +14,12 @@
 [ext_resource path="res://Supply Drop Countdown.gd" type="Script" id=12]
 [ext_resource path="res://Tools/Crosshair/Crosshair.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Resources/8crosshair.png" type="Texture" id=14]
-[ext_resource path="res://Wave Manager/Wave Manager.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Tools/Round Manager.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Wave Manager/Wave Manager.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Tools/Round Manager.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Random Shop/Random Shop.tscn" type="PackedScene" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -64,7 +66,6 @@ limit_right = 2525
 limit_bottom = 1700
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="Player Health Bar" parent="CanvasLayer" instance=ExtResource( 6 )]
 
@@ -120,7 +121,15 @@ pause_mode = 2
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 
-[node name="Wave Manager" parent="." instance=ExtResource( 15 )]
+[node name="Transition" parent="CanvasLayer" instance=ExtResource( 15 )]
+margin_left = -20.0
+margin_top = -13.0
+margin_right = 1047.0
+margin_bottom = 625.0
+fade_out_time = 0.8
+fade_in_time = 0.8
+
+[node name="Wave Manager" parent="." instance=ExtResource( 16 )]
 editor/display_folded = true
 spawn_limit = 38
 spawn_box_width = 20
@@ -183,13 +192,13 @@ position = Vector2( 568.094, 1483.76 )
 [node name="Spawn Position 18" parent="Wave Manager/Spawn Positions" index="17"]
 position = Vector2( 1095.57, 1510.32 )
 
-[node name="??????" parent="." instance=ExtResource( 16 )]
+[node name="??????" parent="." instance=ExtResource( 17 )]
 
-[node name="Weapon Slot Machine" parent="." instance=ExtResource( 17 )]
+[node name="Weapon Slot Machine" parent="." instance=ExtResource( 18 )]
 position = Vector2( 1569.45, 359.157 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="Supply Drop Handler" parent="." instance=ExtResource( 18 )]
+[node name="Supply Drop Handler" parent="." instance=ExtResource( 19 )]
 editor/display_folded = true
 supply_drop_interval = 20
 
@@ -201,6 +210,9 @@ position = Vector2( 1675.66, 767.724 )
 
 [node name="Spawn Location3" parent="Supply Drop Handler/Spawn Locations" index="2"]
 position = Vector2( 1060.02, 361.762 )
+
+[node name="Random Shop" parent="." instance=ExtResource( 20 )]
+position = Vector2( 813.013, 979.038 )
 
 [connection signal="weapon_loaded" from="Player" to="CanvasLayer/Ammo Counter" method="update_all"]
 [connection signal="ammo_changed" from="Player/Weapon" to="CanvasLayer/Ammo Counter" method="update_total_ammo"]

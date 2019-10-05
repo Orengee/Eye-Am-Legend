@@ -137,12 +137,12 @@ func start_wave():
 	if(Settings.nightmare == false):
 	
 		health_bonus += 1
-		speed_bonus = clamp(speed_bonus + 5,0,60)
+		speed_bonus = clamp(speed_bonus + 7,0,70)
 		grunts_per_spawn += 1
-		grunts_per_wave += 5
+		grunts_per_wave += 6
 	else:
 		health_bonus += 6
-		speed_bonus += clamp(speed_bonus + 5,0,60)
+		speed_bonus += clamp(speed_bonus + 7,0,70)
 		grunts_per_wave += 9
 		grunts_per_spawn += 1
 	
