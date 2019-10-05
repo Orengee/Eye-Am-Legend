@@ -96,6 +96,7 @@ tracks/5/keys = {
 script = ExtResource( 1 )
 
 [node name="BG Elements" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 199.003, 60.4287 )
 
 [node name="Sky" type="Sprite" parent="BG Elements"]
@@ -103,7 +104,7 @@ position = Vector2( 400, 195.972 )
 texture = ExtResource( 2 )
 
 [node name="Cloud" type="Sprite" parent="BG Elements"]
-position = Vector2( 631.418, 62.3984 )
+position = Vector2( 632.558, 86.3429 )
 texture = ExtResource( 3 )
 
 [node name="Sun" type="Sprite" parent="BG Elements"]
@@ -136,11 +137,11 @@ scale = Vector2( 0.587353, 0.886635 )
 texture = ExtResource( 7 )
 
 [node name="Left Foot" type="Sprite" parent="FG Elements/Eyeman"]
-position = Vector2( 148.281, 356.875 )
+position = Vector2( 148.281, 352.111 )
 texture = ExtResource( 8 )
 
 [node name="Right Foot" type="Sprite" parent="FG Elements/Eyeman"]
-position = Vector2( 280.237, 354.379 )
+position = Vector2( 280.237, 348.662 )
 texture = ExtResource( 9 )
 
 [node name="Body" type="Sprite" parent="FG Elements/Eyeman"]
@@ -148,7 +149,7 @@ position = Vector2( 212.219, 348.256 )
 texture = ExtResource( 10 )
 
 [node name="Head" type="Sprite" parent="FG Elements/Eyeman"]
-position = Vector2( 210.444, 233.745 )
+position = Vector2( 211.556, 239.862 )
 texture = ExtResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
