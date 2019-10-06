@@ -10,7 +10,7 @@ var clip_empty = false
 var clip_node
 
 onready var timer = get_node("Timer")
-onready var progress_bar = get_node("ProgressBar")
+onready var progress_slider = get_node("Progress Slider")
 
 onready var sound_fx = get_node("SFX")
 
@@ -53,12 +53,12 @@ func _process(delta):
 			clip_empty = true
 	
 	if(reloading == true):
-		progress_bar.visible = true
+		progress_slider.visible = true
 		reload_percent = (timer.wait_time-timer.time_left)/timer.wait_time
-		progress_bar.value = reload_percent
+		progress_slider.value = reload_percent * 100
 	else:
-		progress_bar.visible = false
-		progress_bar.value = 0
+		progress_slider.visible = false
+		progress_slider.value = 0
 	
 	pass
 

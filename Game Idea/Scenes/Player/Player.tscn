@@ -255,14 +255,12 @@ value = 100
 invincibility_time = 0.6
 
 [node name="Camera Pivot" type="Position2D" parent="."]
-editor/display_folded = true
 
 [node name="Camera" type="Camera2D" parent="Camera Pivot" groups=[
 "Camera",
 ]]
 position = Vector2( 70, 0 )
 current = true
-zoom = Vector2( 0.9, 0.9 )
 limit_left = -300
 limit_top = -100
 limit_right = 1450

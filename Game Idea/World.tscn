@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://Tools/Round Manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Weapon Slot Machine/Weapon Slot Machine.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Tools/Supply Drop Handler/Supply Drop Handler.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Random Shop/Random Shop.tscn" type="PackedScene" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -210,9 +209,6 @@ position = Vector2( 1675.66, 767.724 )
 
 [node name="Spawn Location3" parent="Supply Drop Handler/Spawn Locations" index="2"]
 position = Vector2( 1060.02, 361.762 )
-
-[node name="Random Shop" parent="." instance=ExtResource( 20 )]
-position = Vector2( 813.013, 979.038 )
 
 [connection signal="weapon_loaded" from="Player" to="CanvasLayer/Ammo Counter" method="update_all"]
 [connection signal="ammo_changed" from="Player/Weapon" to="CanvasLayer/Ammo Counter" method="update_total_ammo"]

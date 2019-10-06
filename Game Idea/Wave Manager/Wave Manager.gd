@@ -2,7 +2,7 @@ extends Node2D
 
 var wave = 0
 
-export(int) var spawn_limit = 20
+export(int) var spawn_limit = 40
 
 export(int) var spawn_box_width = 1
 export(int) var spawn_box_height = 1
@@ -41,9 +41,9 @@ var in_wave = false
 var enemies_per_wave = 10
 var enemies_spawned = 0
 
-var grunts_per_wave = 10
+var grunts_per_wave = 15
 var grunts_per_spawn = 3
-var grunt_spawn_interval = 2
+var grunt_spawn_interval = 2.5
 var spawned_grunts = 0
 
 
@@ -136,21 +136,27 @@ func start_wave():
 	
 	if(Settings.nightmare == false):
 	
-		health_bonus += 1
-		speed_bonus = clamp(speed_bonus + 7,0,70)
+		
+		speed_bonus = clamp(speed_bonus + 4,0,20)
 		grunts_per_spawn += 1
 		grunts_per_wave += 6
 	else:
 		health_bonus += 6
-		speed_bonus += clamp(speed_bonus + 7,0,70)
+		speed_bonus += clamp(speed_bonus + 7,0,20)
 		grunts_per_wave += 9
 		grunts_per_spawn += 1
 	
+	if(wave % 2 == 0):
+		
+		health_bonus += 1
+		
+		pass
 	
 	if(wave == 3):
 		
 		flyers_per_wave += 1
 		flyers_per_spawn += 1
+		grunts_per_wave += 1
 		
 		pass
 	
@@ -160,16 +166,6 @@ func start_wave():
 		
 		pass
 	
-	if(wave % 5 == 0):
-		
-		var shop_instance = random_shop.instance()
-		shop_instance.global_position = $"Shop Location".global_position
-		
-		var explosion_instance = explosion.instance()
-		explosion_instance.global_position = $"Shop Location".global_position
-		
-		Global.world.add_child(shop_instance)
-		Global.world.add_child(explosion_instance)
 		
 		pass
 	
@@ -195,6 +191,16 @@ func start_wave():
 func stop_wave():
 		
 	Global.player.music_passive()
+	
+	if(wave % 5 == 0):
+		var shop_instance = random_shop.instance()
+		shop_instance.global_position = $"Shop Location".global_position
+		
+		var explosion_instance = explosion.instance()
+		explosion_instance.global_position = $"Shop Location".global_position
+		
+		Global.world.add_child(shop_instance)
+		Global.world.add_child(explosion_instance)
 	
 	grunt_timer.stop()
 	round_start_timer.start()

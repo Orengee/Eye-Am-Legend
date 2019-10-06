@@ -96,7 +96,6 @@ tracks/5/keys = {
 script = ExtResource( 1 )
 
 [node name="BG Elements" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 199.003, 60.4287 )
 __meta__ = {
 "_edit_group_": true
@@ -119,7 +118,6 @@ position = Vector2( 399.521, 475.415 )
 texture = ExtResource( 5 )
 
 [node name="FG Elements" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( -149.302, 121.714 )
 __meta__ = {
 "_edit_group_": true
@@ -130,6 +128,7 @@ position = Vector2( 183.651, 492.456 )
 texture = ExtResource( 6 )
 
 [node name="Eyeman" type="Node2D" parent="FG Elements"]
+editor/display_folded = true
 position = Vector2( -5.44153, 13.6038 )
 
 [node name="Shadow" type="Sprite" parent="FG Elements/Eyeman"]

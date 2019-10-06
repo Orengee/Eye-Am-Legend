@@ -59,7 +59,7 @@ tracks/1/keys = {
 ]]
 script = ExtResource( 1 )
 speed = 240.0
-MAX_FORCE = 0.04
+MAX_FORCE = 0.02
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.0666667, 0.0666667, 0.0666667, 0.329412 )

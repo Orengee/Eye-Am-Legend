@@ -109,6 +109,7 @@ valign = 1
 position = Vector2( 120.318, 119.09 )
 scale = Vector2( 3.49384, 3.49384 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Camera Shake" parent="." instance=ExtResource( 9 )]
@@ -130,8 +131,8 @@ position = Vector2( 513.576, 297.068 )
 current = true
 
 [node name="Transition" parent="." instance=ExtResource( 12 )]
-fade_out_time = 0.8
-fade_in_time = 0.8
+fade_out_time = 0.7
+fade_in_time = 0.7
 
 [connection signal="pressed" from="Normal" to="." method="load_normal_mode"]
 [connection signal="pressed" from="Nightmare" to="." method="load_nightmare_mode"]
