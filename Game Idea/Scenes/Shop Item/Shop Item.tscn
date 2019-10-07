@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Shop Item/Shop Item.gd" type="Script" id=1]
 [ext_resource path="res://Resources/shadow.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Resources/manaspc.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Audio/buy.wav" type="AudioStream" id=6]
-[ext_resource path="res://Tools/Tooltip/Tooltip.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -43,13 +42,6 @@ valign = 1
 
 [node name="SFX" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 6 )
-
-[node name="Tooltip" parent="." instance=ExtResource( 7 )]
-visible = false
-margin_left = -104.722
-margin_top = -109.803
-margin_right = 104.278
-margin_bottom = -23.8026
 
 [connection signal="bought" from="." to="SFX" method="_play"]
 [connection signal="mouse_entered" from="." to="." method="_on_Shop_Item_mouse_entered"]

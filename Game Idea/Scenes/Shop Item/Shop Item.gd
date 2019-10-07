@@ -2,11 +2,15 @@ extends Area2D
 
 export(int) var price = 10
 export(bool) var one_time_buy = false
+export(String) var text_notification = "+SHOP ITEM"
 var times_bought = 0
 
 onready var price_label = get_node("Label")
 onready var tween = get_node("Tween")
 onready var tooltip = get_node("Tooltip")
+
+onready var text_notifier = preload("res://Tools/Text Notifier/Text Notifier.tscn")
+
 var sprite
 
 signal bought
@@ -39,6 +43,11 @@ func buy(buyer):
 		animate_interaction()
 		emit_signal("bought")
 		emit_signal("upgraded", times_bought)
+		
+		var notifier_instance = text_notifier.instance()
+		notifier_instance.text = text_notification
+		notifier_instance.rect_position = Vector2(-35,-70)+Global.player.global_position
+		Global.world.add_child(notifier_instance)
 		
 		if(one_time_buy == true):
 			queue_free()

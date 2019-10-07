@@ -194,7 +194,7 @@ func stop_wave():
 		
 	Global.player.music_passive()
 	
-	if(wave % 5 == 0):
+	if(wave % 3 == 0):
 		var shop_instance = random_shop.instance()
 		shop_instance.global_position = $"Shop Location".global_position
 		

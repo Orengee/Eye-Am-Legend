@@ -1,7 +1,14 @@
 extends "res://Scenes/Shop Item/Shop Item.gd"
 
 #Raise Player maximum health
-export(int) var health_increase = 25
+export(int) var health_increase = 20
+
+func _ready():
+	
+	._ready()
+	text_notification = "+Maximum Health"
+	
+	pass
 
 func effect():
 	

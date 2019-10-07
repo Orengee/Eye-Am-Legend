@@ -2,6 +2,13 @@ extends "res://Scenes/Shop Item/Shop Item.gd"
 
 export(float) var reload_percent = 0.5
 
+func _ready():
+	
+	._ready()
+	text_notification = "+Reload Speed"
+	
+	pass
+
 func effect():
 	
 	Global.reload_multiplier *= reload_percent

@@ -3,6 +3,13 @@ extends "res://Scenes/Shop Item/Shop Item.gd"
 export(float) var fire_rate_percent = 0.66
 export(float) var spread_percent = 4
 
+func _ready():
+	
+	._ready()
+	text_notification = "+Fire Rate \n +Spread"
+	
+	pass
+
 func effect():
 	
 	Global.fire_rate_multiplier *= fire_rate_percent

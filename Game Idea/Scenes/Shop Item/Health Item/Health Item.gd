@@ -2,6 +2,13 @@ extends "res://Scenes/Shop Item/Shop Item.gd"
 
 onready var health_pickup = preload("res://Scenes/Pickups/Health Pickup/Health Pickup.tscn")
 
+func _ready():
+	
+	._ready()
+	text_notification = "+Health"
+	
+	pass
+
 func effect():
 	
 	price = floor(price * 1.5)
