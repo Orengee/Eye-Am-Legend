@@ -18,8 +18,10 @@ onready var grunt = preload("res://Scenes/Enemy/Enemy.tscn")
 onready var brute = preload("res://Scenes/Brute/Brute.tscn")
 onready var flyer = preload("res://Scenes/Flyer/Flyer.tscn")
 onready var sfx = get_node("SFX")
+
 onready var round_notifier = preload("res://Round Notifier.tscn")
 onready var random_shop = preload("res://Scenes/Random Shop/Random Shop.tscn")
+onready var shop_notifier = preload("res://Scenes/UI/Shop Notifier/Shop Notifier.tscn")
 
 signal wave_started
 signal wave_ended
@@ -196,9 +198,12 @@ func stop_wave():
 		var shop_instance = random_shop.instance()
 		shop_instance.global_position = $"Shop Location".global_position
 		
+		var notifier_instance = shop_notifier.instance()
+		
 		var explosion_instance = explosion.instance()
 		explosion_instance.global_position = $"Shop Location".global_position
 		
+		Global.world.add_child(notifier_instance)
 		Global.world.add_child(shop_instance)
 		Global.world.add_child(explosion_instance)
 	
