@@ -63,7 +63,7 @@ texture = ExtResource( 2 )
 [node name="Slot Machine" type="AnimatedSprite" parent="Sprites"]
 position = Vector2( 0.203903, 0.611721 )
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 speed_scale = 6.0
 playing = true
 
@@ -107,6 +107,6 @@ stream = ExtResource( 24 )
 volume_db = 1.0
 volume = -1.0
 
-[connection signal="roll_end" from="." to="Looping Effect" method="stop"]
 [connection signal="roll_end" from="." to="Ding" method="_play"]
+[connection signal="roll_end" from="." to="Looping Effect" method="stop"]
 [connection signal="roll_start" from="." to="Looping Effect" method="_play"]

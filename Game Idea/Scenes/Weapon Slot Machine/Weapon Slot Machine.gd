@@ -45,6 +45,31 @@ func _ready():
 	pass
 
 
+func buy(buyer):
+	
+	var buyer_wallet = buyer.wallet_component
+	var wallet_value = buyer_wallet.value
+	
+	if(wallet_value >= price):
+		
+		buyer_wallet.lower_value(price)
+		times_bought += 1
+		effect()
+		price_label.text = str(price)
+		animate_interaction()
+		emit_signal("bought")
+		emit_signal("upgraded", times_bought)
+		
+		if(one_time_buy == true):
+			queue_free()
+		
+	else:
+		
+		print("WHAT KINDA SHOP DO YA THINK IM RUNNING")
+	
+	pass
+
+
 func effect():
 	
 	animate_interaction()

@@ -6,9 +6,13 @@
 [ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Audio/reload (1).wav" type="AudioStream" id=5]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 73, 6 )
+region_rect = Rect2( 0.625, -0.25, 74.5, 8.375 )
+margin_left = 3.625
+margin_right = 5.375
+margin_top = 5.375
+margin_bottom = 5.5
 
 [sub_resource type="StyleBoxTexture" id=2]
 
@@ -25,7 +29,7 @@ margin_right = 37.7741
 margin_bottom = -40.8743
 mouse_filter = 2
 custom_icons/grabber = ExtResource( 2 )
-custom_styles/slider = SubResource( 3 )
+custom_styles/slider = SubResource( 1 )
 custom_styles/grabber_area = SubResource( 2 )
 
 [node name="SFX" parent="." instance=ExtResource( 4 )]

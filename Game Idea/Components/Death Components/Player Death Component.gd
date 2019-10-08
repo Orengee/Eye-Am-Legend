@@ -7,7 +7,6 @@ const explosion = preload("res://Particles/Explosion.tscn")
 
 onready var death_sound = get_node("Death Sound")
 onready var timer = get_node("Timer")
-onready var knockback_sender = get_node("Knockback Sender")
 
 onready var player = get_parent()
 
@@ -15,26 +14,29 @@ signal death
 
 func death():
 	
-	#GAME OVER
-	emit_signal("death")
-	Global.game_over = true
-	
-	player.music_player.playing = false
-	player.music_player_2.playing = false
-	
-	knockback_sender.enable(0.1)
-	
-	death_sound.play()
-	#player.set_physics_process(false)
-	if(player.weapon_node.get_child(0) != null):
-		player.weapon_node.get_child(0).queue_free()
-	Engine.time_scale = 0.4
-	
-	if(player.animation_player.current_animation != "Death"):
-		player.animation_player.play("Death")
+	if(alive == true):
+		
+		#GAME OVER
+		emit_signal("death")
+		Global.game_over = true
+		
+		player.music_player.playing = false
+		player.music_player_2.playing = false
+		
+		player.set_physics_process(false)
+		
+		death_sound.play()
+		#player.set_physics_process(false)
+		if(player.weapon_node.get_child(0) != null):
+			player.weapon_node.get_child(0).queue_free()
+		Engine.time_scale = 0.4
+		
+		if(player.animation_player.current_animation != "Death"):
+			player.animation_player.play("Death")
+			timer.start()
 
-	timer.start()
 	
+	alive = false
 	
 	pass
 
