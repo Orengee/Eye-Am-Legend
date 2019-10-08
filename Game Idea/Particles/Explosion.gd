@@ -8,9 +8,10 @@ func _ready():
 	playing = true
 	self.connect("animation_finished",self, "on_finish")
 	
-	var sfx_instance = sfx.instance()
-	sfx_instance.volume = sfx_volume
-	Global.world.add_child(sfx_instance)
+	if(Settings.SFX_VOLUME > -60):
+		var sfx_instance = sfx.instance()
+		sfx_instance.volume = sfx_volume
+		Global.world.add_child(sfx_instance)
 	
 	pass
 

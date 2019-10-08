@@ -5,3 +5,4 @@
 [node name="SFX" type="AudioStreamPlayer"]
 script = ExtResource( 1 )
 
+[connection signal="tree_entered" from="." to="." method="_on_SFX_tree_entered"]

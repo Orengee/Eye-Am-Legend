@@ -96,8 +96,6 @@ value = 10
 [node name="Death Component" parent="." instance=ExtResource( 7 )]
 
 [node name="Knockback Reciever" parent="." instance=ExtResource( 8 )]
-editor/display_folded = true
-visible = false
 friction = 0.1
 
 [node name="Collision" parent="Knockback Reciever" index="0"]

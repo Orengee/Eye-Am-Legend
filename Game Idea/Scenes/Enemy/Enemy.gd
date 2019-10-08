@@ -13,6 +13,8 @@ onready var tween = get_node("Tween")
 
 onready var shader = preload("res://WhiteShader.tres")
 
+const death_sfx = preload("res://Tools/Temporary Sound FX/Temp Sound FX.tscn")
+
 func _ready():
 	
 	speed = speed + rand_range(0, speed_range)
@@ -55,6 +57,10 @@ func animate_hit():
 
 
 func _on_Enemy_tree_exiting():
+	
+	if(Settings.SFX_VOLUME > -60):
+		var sfx_instance = death_sfx.instance()
+		Global.world.add_child(sfx_instance)
 	
 	Global.enemies_defeated += 1
 	Engine.time_scale = 1

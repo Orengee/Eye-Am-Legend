@@ -1,15 +1,16 @@
 extends CheckBox
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pressed = OS.window_fullscreen
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
+	pass
+	
+	
 func _process(delta):
-	OS.window_fullscreen = pressed
+	
+	Settings.FULLSCREEN = pressed
+	OS.window_fullscreen = Settings.FULLSCREEN
+	
 	pass

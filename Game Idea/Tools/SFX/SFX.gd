@@ -4,13 +4,15 @@ export(float) var volume = 1
 
 func _ready():
 	
-	print(Settings.SFX_VOLUME)
-	volume_db += Settings.SFX_VOLUME
+	if(Settings.SFX_VOLUME > -60):
+		volume_db = Settings.SFX_VOLUME
 	
 	pass
 
 func _process(delta):
 	
+	
+	volume_db = Settings.SFX_VOLUME
 	#volume_db = volume * Settings.SFX_VOLUME
 	#volume_db = volume
 	#if(Settings.SFX_VOLUME <= 0):
@@ -34,5 +36,11 @@ func _play_range(strength):
 func stop():
 	
 	playing = false
+	
+	pass
+
+func _on_SFX_tree_entered():
+	
+	volume_db = Settings.SFX_VOLUME
 	
 	pass

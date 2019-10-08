@@ -11,6 +11,8 @@ onready var anim_player = get_node("AnimationPlayer")
 onready var spawn_anim_player = get_node("Spawn Animation Player")
 onready var tween = get_node("Tween")
 
+const sfx = preload("res://Tools/Temporary Sound FX/Coin SFX.tscn")
+
 func _ready():
 	
 	anim_player.play("spin")
@@ -57,6 +59,11 @@ func on_body_entered(body):
 	
 	if(body.is_in_group("Player")):
 		body.wallet_component.raise_value(value)
+		
+		if(Settings.SFX_VOLUME > -60):
+			var sfx_instance = sfx.instance()
+			Global.world.add_child(sfx_instance)
+		
 		queue_free()
 	
 	pass

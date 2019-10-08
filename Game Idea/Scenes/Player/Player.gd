@@ -19,6 +19,7 @@ export(int) var damage_bonus = 0
 export(int) var speed_bonus = 0
 
 onready var body = get_node("Body")
+onready var head = body.get_node("Head")
 onready var weapon_node = get_node("Weapon")
 onready var animation_player = get_node("AnimationPlayer")
 onready var wallet_component = get_node("Wallet Component")

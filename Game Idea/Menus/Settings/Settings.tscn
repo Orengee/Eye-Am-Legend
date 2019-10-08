@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Menus/Settings/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -14,27 +14,29 @@
 [ext_resource path="res://Menus/Settings/Back.gd" type="Script" id=12]
 [ext_resource path="res://Menus/Settings/Full Screen.gd" type="Script" id=13]
 [ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Resources/Audio/ding.wav" type="AudioStream" id=15]
+[ext_resource path="res://Tools/SFX/SFX.gd" type="Script" id=16]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 300, 16 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 300, 16 )
+margin_top = 0.5
+
+[sub_resource type="StyleBoxTexture" id=4]
 
 [sub_resource type="DynamicFont" id=5]
 size = 24
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 300, 16 )
-margin_top = 0.5
-
-[sub_resource type="StyleBoxTexture" id=3]
-
 [sub_resource type="DynamicFont" id=6]
-size = 24
-font_data = ExtResource( 7 )
-
-[sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 7 )
 
@@ -68,9 +70,11 @@ margin_bottom = 123.556
 custom_icons/grabber_disabled = ExtResource( 3 )
 custom_icons/grabber_highlight = ExtResource( 4 )
 custom_icons/grabber = ExtResource( 3 )
-custom_styles/slider = SubResource( 4 )
-min_value = -50.0
-max_value = 0.0
+custom_styles/slider = SubResource( 1 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+ticks_on_borders = true
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Music Settings"]
@@ -78,11 +82,12 @@ margin_left = 1.0
 margin_top = -54.0
 margin_right = 300.0
 margin_bottom = -10.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Music Volume"
 valign = 1
 
 [node name="Sound FX Settings" type="HSlider" parent="."]
+editor/display_folded = true
 margin_left = 98.2395
 margin_top = 196.069
 margin_right = 398.24
@@ -90,10 +95,12 @@ margin_bottom = 220.069
 custom_icons/grabber_disabled = ExtResource( 3 )
 custom_icons/grabber_highlight = ExtResource( 4 )
 custom_icons/grabber = ExtResource( 3 )
-custom_styles/slider = SubResource( 2 )
-custom_styles/grabber_area = SubResource( 3 )
-min_value = -50.0
-max_value = 0.0
+custom_styles/slider = SubResource( 3 )
+custom_styles/grabber_area = SubResource( 4 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+ticks_on_borders = true
 script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Sound FX Settings"]
@@ -101,7 +108,7 @@ margin_left = 2.0
 margin_top = -42.0
 margin_right = 298.0
 margin_bottom = 5.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "SFX Volume"
 valign = 1
 
@@ -122,7 +129,7 @@ margin_left = 154.883
 margin_top = 11.0001
 margin_right = 326.883
 margin_bottom = 75.0001
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Back"
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
@@ -159,6 +166,14 @@ margin_bottom = 637.434
 fade_out_time = 0.7
 fade_in_time = 0.7
 
+[node name="SFX Test" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+script = ExtResource( 16 )
+
 [connection signal="changed" from="Music Settings" to="Music Settings" method="_on_Music_Settings_changed"]
+[connection signal="value_changed" from="Music Settings" to="." method="_on_Music_Settings_value_changed"]
 [connection signal="changed" from="Sound FX Settings" to="Sound FX Settings" method="_on_Sound_FX_Settings_changed"]
+[connection signal="mouse_entered" from="Sound FX Settings" to="." method="_on_Sound_FX_Settings_mouse_entered"]
+[connection signal="mouse_exited" from="Sound FX Settings" to="." method="_on_Sound_FX_Settings_mouse_exited"]
+[connection signal="value_changed" from="Sound FX Settings" to="." method="_on_Sound_FX_Settings_value_changed"]
 [connection signal="pressed" from="Back" to="Back" method="_on_Back_pressed"]

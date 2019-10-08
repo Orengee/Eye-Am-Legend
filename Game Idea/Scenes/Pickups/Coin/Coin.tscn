@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Pickups/Coin/Coin.gd" type="Script" id=1]
 [ext_resource path="res://Resources/shadow.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Resources/coin_2.png" type="Texture" id=4]
 [ext_resource path="res://Resources/coin_3.png" type="Texture" id=5]
 [ext_resource path="res://Resources/coin_4.png" type="Texture" id=6]
-[ext_resource path="res://Components/SpawnOnExit/SpawnOnExit.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 7 )
@@ -98,7 +97,4 @@ anims/Jump = SubResource( 3 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="SpawnOnExit" parent="." instance=ExtResource( 7 )]
-object_path = "res://Tools/Temporary Sound FX/Coin SFX.tscn"
 

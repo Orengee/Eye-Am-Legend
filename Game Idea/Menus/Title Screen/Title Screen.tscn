@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Menus/Title Screen/Title Screen.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sky.png" type="Texture" id=2]
@@ -16,11 +16,12 @@
 [ext_resource path="res://Menus/Title Screen/TextureButton.gd" type="Script" id=14]
 [ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=16]
-[ext_resource path="res://Resources/UI Elements/settings_button_default.png" type="Texture" id=17]
-[ext_resource path="res://Resources/UI Elements/settings_button_pressed.png" type="Texture" id=18]
-[ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=19]
-[ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=20]
-[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Tools/SFX/SFX.gd" type="Script" id=17]
+[ext_resource path="res://Resources/UI Elements/settings_button_default.png" type="Texture" id=18]
+[ext_resource path="res://Resources/UI Elements/settings_button_pressed.png" type="Texture" id=19]
+[ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=20]
+[ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=21]
+[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=22]
 
 [node name="Title Screen" type="Node2D"]
 script = ExtResource( 1 )
@@ -70,7 +71,6 @@ position = Vector2( 167.137, 292.068 )
 texture = ExtResource( 10 )
 
 [node name="Start Game" type="TextureButton" parent="."]
-editor/display_folded = true
 margin_left = 515.877
 margin_top = 329.664
 margin_right = 710.877
@@ -92,33 +92,30 @@ shake_duration = 0.2
 wait_time = 1.1
 one_shot = true
 
-[node name="Button Sound" type="AudioStreamPlayer2D" parent="Start Game"]
+[node name="Button Sound" type="AudioStreamPlayer" parent="Start Game"]
 stream = ExtResource( 16 )
 pitch_scale = 0.6
+script = ExtResource( 17 )
 
 [node name="Settings" type="TextureButton" parent="."]
-editor/display_folded = true
 margin_left = 496.881
 margin_top = 434.33
 margin_right = 733.881
 margin_bottom = 522.33
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 18 )
-texture_hover = ExtResource( 19 )
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 20 )
 expand = true
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="Timer" type="Timer" parent="Settings"]
 wait_time = 1.1
 one_shot = true
 
-[node name="Button Sound" type="AudioStreamPlayer2D" parent="Settings"]
-position = Vector2( 105.222, 49.5283 )
+[node name="Button Sound" type="AudioStreamPlayer" parent="Settings"]
 stream = ExtResource( 16 )
 pitch_scale = 0.6
-__meta__ = {
-"_edit_group_": true
-}
+script = ExtResource( 17 )
 
 [node name="Camera Shake" parent="Settings" instance=ExtResource( 15 )]
 shake_power = 3.0
@@ -131,7 +128,7 @@ position = Vector2( 608.871, 240.587 )
 current = true
 zoom = Vector2( 1.19, 1.19 )
 
-[node name="Transition" parent="." instance=ExtResource( 21 )]
+[node name="Transition" parent="." instance=ExtResource( 22 )]
 margin_left = -37.0
 margin_top = -137.0
 margin_right = 1249.0

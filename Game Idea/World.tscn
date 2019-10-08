@@ -65,6 +65,7 @@ limit_right = 2525
 limit_bottom = 1700
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="Player Health Bar" parent="CanvasLayer" instance=ExtResource( 6 )]
 
