@@ -9,6 +9,7 @@ func _ready():
 	
 	timer.start()
 	MenuMusic.play("res://Resources/Audio/title2.ogg")
+	print("yeet")
 	pass
 
 
