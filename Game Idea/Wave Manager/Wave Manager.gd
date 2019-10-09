@@ -2,7 +2,7 @@ extends Node2D
 
 var wave = 0
 
-export(int) var spawn_limit = 40
+export(int) var spawn_limit = 43
 
 export(int) var spawn_box_width = 1
 export(int) var spawn_box_height = 1
@@ -141,7 +141,7 @@ func start_wave():
 		
 		speed_bonus = clamp(speed_bonus + 4,0,20)
 		grunts_per_spawn += 1
-		grunts_per_wave += 6
+		grunts_per_wave += 7
 	else:
 		health_bonus += 6
 		speed_bonus += clamp(speed_bonus + 7,0,20)

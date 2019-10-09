@@ -6,10 +6,10 @@ onready var target = position
 
 var velocity = Vector2(1,1)
 var speed_range = 50
-export(float) var speed = 20
-var min_speed = 20
-export(float) var MAX_FORCE = 0.06
-export(float) var MAX_SEPARTION_FORCE = 7
+export(float) var speed = 60
+var min_speed = 40
+export(float) var MAX_FORCE = 0.1
+export(float) var MAX_SEPARTION_FORCE = 8
 
 onready var health = get_node("Health Component")
 onready var anim_player = get_node("AnimationPlayer")
