@@ -86,13 +86,13 @@ func refill_ammo(percent):
 
 func refill_clip():
 	
-	if(reserve_ammo >= clip_size):
+	if(reserve_ammo >= clip_size-rounds_left):
 		
 		reserve_ammo = reserve_ammo - (clip_size - rounds_left)
 		rounds_left = clip_size
 		
 	else:
-		rounds_left = reserve_ammo
+		rounds_left += reserve_ammo
 		reserve_ammo = 0
 	
 	emit_signal("round_changed",rounds_left)

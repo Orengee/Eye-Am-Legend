@@ -11,7 +11,7 @@ func _ready():
 
 func effect():
 	
-	price = floor(price * 1.5)
+	price = floor(price * 1.2)
 	
 	var health_instance = health_pickup.instance()
 	health_instance.global_position = self.global_position

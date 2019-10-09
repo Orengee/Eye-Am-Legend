@@ -24,6 +24,7 @@ func _ready():
 	Global.enemies.append(self)
 	speed = speed + rand_range(0, speed_range)
 	
+	
 	min_speed = speed - 10
 	
 	pass
@@ -47,7 +48,8 @@ func _physics_process(delta):
 	#NIGHTMARE MODE
 	if(Settings.nightmare == true):
 		#speed = speed + (health.maximum_value - health.value) / 3
-		speed = (Global.player.maximum_speed + Global.player.speed_bonus) + 100
+		speed = (Global.player.maximum_speed + Global.player.speed_bonus)
+		min_speed = speed - 10
 	
 	
 	pass

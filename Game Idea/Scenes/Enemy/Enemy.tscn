@@ -60,7 +60,10 @@ tracks/1/keys = {
 "Enemy",
 ]]
 script = ExtResource( 1 )
+PERCEPTION_RADIUS = 270.0
 speed = 160.0
+MAX_FORCE = 0.08
+MAX_SEPARTION_FORCE = 9.0
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.0666667, 0.0666667, 0.0666667, 0.329412 )
