@@ -10,3 +10,10 @@ script = ExtResource( 1 )
 [node name="Collision" type="CollisionShape2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="DisabledTimer" type="Timer" parent="."]
+wait_time = 1.46
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_Hitbox_area_entered"]
+[connection signal="timeout" from="DisabledTimer" to="." method="_on_DisabledTimer_timeout"]

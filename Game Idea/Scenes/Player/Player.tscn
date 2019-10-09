@@ -274,11 +274,12 @@ script = ExtResource( 7 )
 [node name="Skill" type="Node2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -3 )
 shape = SubResource( 2 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 8 )]
-editor/display_folded = true
+constant_check = true
 
 [node name="Collision" parent="Hurtbox" index="0"]
 position = Vector2( 0, -3.6035 )
@@ -293,7 +294,7 @@ value = 100
 [node name="Player Death Component" parent="." instance=ExtResource( 11 )]
 
 [node name="InvincibleOnHit" parent="." instance=ExtResource( 12 )]
-invincibility_time = 0.6
+invincibility_time = 1.0
 
 [node name="Camera Pivot" type="Position2D" parent="."]
 
@@ -350,7 +351,8 @@ wait_time = 0.25
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Player Death Component" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="value_lowered" from="Health Component" to="SFX" method="_play_range"]
+[connection signal="damaged" from="Hurtbox" to="." method="_on_Hurtbox_damaged"]
 [connection signal="value_lowered" from="Health Component" to="Damage Shake" method="starto"]
+[connection signal="value_lowered" from="Health Component" to="SFX" method="_play_range"]
 
 [editable path="Hurtbox"]

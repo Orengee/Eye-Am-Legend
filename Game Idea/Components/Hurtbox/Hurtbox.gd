@@ -1,5 +1,7 @@
 extends Area2D
 
+export(bool) var constant_check = false
+
 #Detects damaging collisions or "hitboxes"
 onready var collision = get_node("Collision")
 onready var parent = get_parent()
@@ -9,6 +11,9 @@ var disabled = false
 signal damaged
 
 func _ready():
+	
+	if(constant_check == false):
+		self.set_process(false)
 	
 	#Connect signals for detecting collisions
 	if(is_connected("area_entered", self,"on_area_entered") == false):
@@ -28,20 +33,39 @@ func _ready():
 	
 	pass
 
+
+func _process(delta):
+	
+	if(constant_check == true):
+		var areas = get_overlapping_areas()
+		for area in areas:
+			if(area.is_in_group("Hitbox")):
+				if(parent.is_in_group(area.target_group)):
+					#Assign damage information
+					var damage_taken = area.damage
+					#Emit signal
+					emit_signal("damaged", damage_taken)
+					#Play a hit effect
+					flash_white()
+	
+	pass
+
+
 func on_area_entered(area):
 	
-	if(disabled == false):
-		#Check if the collision was from a hitbox
-		if(area.is_in_group("Hitbox")):
-			#A hit has been taken: signal that damage has been taken
-			if(parent.is_in_group(area.target_group)):
-				
-				#Assign damage information
-				var damage_taken = area.damage
-				#Emit signal
-				emit_signal("damaged", damage_taken)
-				#Play a hit effect
-				flash_white()
+	if(constant_check == false):
+		if(disabled == false):
+			#Check if the collision was from a hitbox
+			if(area.is_in_group("Hitbox")):
+				#A hit has been taken: signal that damage has been taken
+				if(parent.is_in_group(area.target_group)):
+					
+					#Assign damage information
+					var damage_taken = area.damage
+					#Emit signal
+					emit_signal("damaged", damage_taken)
+					#Play a hit effect
+					flash_white()
 				
 		
 	pass

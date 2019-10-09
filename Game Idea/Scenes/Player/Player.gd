@@ -30,6 +30,8 @@ onready var music_player_2 = get_node("Music2")
 onready var weapon_switch_timer = get_node("Weapon Switch Timer")
 onready var skill = get_node("Skill")
 
+onready var shader = preload("res://WhiteShader.tres")
+
 onready var regular_music = preload("res://Resources/Audio/gameplay1 (1).ogg")
 onready var nightmare_music = preload("res://Resources/Audio/nightmare.ogg")
 onready var nightmare_music_passive = preload("res://Resources/Audio/nightmare_p.ogg")
@@ -322,3 +324,41 @@ func fade_in_track(music_node,final_volume):
 	
 	pass
 
+
+func flash_white():
+	
+	var sprites = body.get_children()
+	
+	for sprite in sprites:
+		sprite.material = shader
+	
+	var t = Timer.new()
+	t.set_wait_time(0.1)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	
+	for sprite in sprites:
+		sprite.material = null
+	
+	t.queue_free()
+	
+	pass
+
+
+func _on_Hurtbox_damaged(damage):
+	
+	flash_white()
+	
+	$Hurtbox/Collision.disabled = true
+	var t = Timer.new()
+	t.set_wait_time(1)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	$Hurtbox/Collision.disabled = false
+	
+	pass

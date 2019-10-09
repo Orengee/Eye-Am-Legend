@@ -18,13 +18,13 @@
 extents = Vector2( 21.4465, 20.6385 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 19.3153, 18.8058 )
+extents = Vector2( 18.4553, 17.3274 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 21.1545, 17.7186 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 15.6663, 15.5067 )
+extents = Vector2( 13.9034, 10.5954 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "default"
@@ -73,20 +73,21 @@ position = Vector2( 0.681122, 0 )
 texture = ExtResource( 3 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 visible = false
 
 [node name="Collision" parent="Hurtbox" index="0"]
-position = Vector2( 1.02168, 3.45475 )
+position = Vector2( 0.634252, 5.7793 )
 shape = SubResource( 1 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
-visible = false
 damage = 20
 target_group = "Player"
+update_after_hit = true
 
 [node name="Collision" parent="Hitbox" index="0"]
-position = Vector2( 0.437699, 4.67236 )
+position = Vector2( 0.0502707, 9.12776 )
 shape = SubResource( 2 )
 
 [node name="Health Component" parent="." instance=ExtResource( 6 )]
@@ -96,6 +97,8 @@ value = 10
 [node name="Death Component" parent="." instance=ExtResource( 7 )]
 
 [node name="Knockback Reciever" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
+visible = false
 friction = 0.1
 
 [node name="Collision" parent="Knockback Reciever" index="0"]
@@ -103,8 +106,7 @@ position = Vector2( 0.291992, 3.50387 )
 shape = SubResource( 3 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0.340561, 4.52665 )
+position = Vector2( -0.0468596, 15.3746 )
 shape = SubResource( 4 )
 
 [node name="SpawnOnExit" parent="." instance=ExtResource( 9 )]
