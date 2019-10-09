@@ -85,7 +85,7 @@ func _ready():
 	skill.add_child(skill_node)
 	
 	if(Settings.nightmare == true):
-		Settings.MUSIC_VOLUME *= 1.5
+		Settings.MUSIC_VOLUME *= linear2db(db2linear(Settings.MUSIC_VOLUME)*1.5)
 		music_player.stream = nightmare_music
 		music_player_2.stream = nightmare_music_passive
 		
