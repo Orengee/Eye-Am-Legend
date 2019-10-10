@@ -169,7 +169,6 @@ fade_in_time = 0.7
 [node name="SFX Test" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 script = ExtResource( 16 )
-
 [connection signal="changed" from="Music Settings" to="Music Settings" method="_on_Music_Settings_changed"]
 [connection signal="value_changed" from="Music Settings" to="." method="_on_Music_Settings_value_changed"]
 [connection signal="changed" from="Sound FX Settings" to="Sound FX Settings" method="_on_Sound_FX_Settings_changed"]

@@ -135,7 +135,6 @@ margin_right = 1249.0
 margin_bottom = 621.0
 fade_out_time = 0.7
 fade_in_time = 0.7
-
 [connection signal="pressed" from="Start Game" to="Start Game" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Start Game/Timer" to="Start Game" method="_on_Timer_timeout"]
 [connection signal="pressed" from="Settings" to="Settings" method="_on_Settings_pressed"]
