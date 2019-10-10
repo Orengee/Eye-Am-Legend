@@ -1,55 +1,30 @@
 extends Node2D
 
-onready var timer = get_node("Timer")
-onready var tween = get_node("Tween")
+onready var opanim = get_node("opanim")
+onready var skipanim = get_node("skipanim")
 
 var scene = 1
 
 func _ready():
 	
-	timer.start()
 	MenuMusic.play("res://Resources/Audio/title2.ogg")
-	print("yeet")
+	opanim.play("opening")
+	
 	pass
 
 
 func _input(event):
 	
-	#SKIP
-	if((event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed)):
-		if(event.is_action("Fullscreen") == false):
-			MenuMusic._player.seek(42.6666)
-			get_tree().change_scene("res://Menus/Title Screen/Title Screen.tscn")
-
-
-func fade_out(scene):
-	
-	tween.interpolate_property(scene,"modulate",Color(1,1,1,1),Color(1,1,1,0),0.3,Tween.TRANS_LINEAR,Tween.EASE_OUT)
-	tween.start()
-	
-	pass
-	
-	
-func fade_in(scene):
-	
-	tween.interpolate_property(scene,"modulate",Color(1,1,1,0),Color(1,1,1,1),0.5,Tween.TRANS_LINEAR,Tween.EASE_OUT)
-	tween.start()
-	
-	pass
-
-
-func _on_Timer_timeout():
-	
-	fade_out(get_node(str(scene)))
-	scene += 1
-	
-	if(scene == 9):
+	if event is InputEventKey and event.scancode == KEY_SPACE :
+		MenuMusic._player.seek(42.6666)
 		get_tree().change_scene("res://Menus/Title Screen/Title Screen.tscn")
+	elif((event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed)) : 
+		skipanim.play("skip")
 		
+	pass
+
+func _on_opanim_animation_finished(anim_name):
 	
-	if(scene < 9):
-		fade_in(get_node(str(scene)))
-	
-	timer.start()
+	get_tree().change_scene("res://Menus/Title Screen/Title Screen.tscn")
 	
 	pass

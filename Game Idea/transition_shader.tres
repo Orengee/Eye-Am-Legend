@@ -23,4 +23,3 @@ void fragment()
 shader = SubResource( 1 )
 shader_param/cutoff = 0.0
 shader_param/filter = ExtResource( 1 )
-
