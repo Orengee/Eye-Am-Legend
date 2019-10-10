@@ -1,9 +1,8 @@
 extends TextureButton
 
-
 func _on_TextureButton_pressed():
 	
-	var transition = get_node("../../../Transition")
+	var transition = get_node("../Transition")
 	transition.animate_fade_out()
 	$"Camera Shake".start()
 	$"Button Sound".play()

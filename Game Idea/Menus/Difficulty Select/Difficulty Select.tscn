@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Menus/Difficulty Select/Difficulty Select.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -11,9 +11,7 @@
 [ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Tools/SFX/SFX.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=11]
-[ext_resource path="res://Resources/UI Elements/back_button_default.png" type="Texture" id=12]
-[ext_resource path="res://Resources/UI Elements/back_button_hover.png" type="Texture" id=13]
-[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -64,15 +62,12 @@ valign = 1
 
 [node name="Normal" type="TextureButton" parent="."]
 editor/display_folded = true
-margin_left = 147.819
-margin_top = 196.53
-margin_right = 386.819
-margin_bottom = 430.53
+margin_left = 148.927
+margin_top = 269.66
+margin_right = 387.927
+margin_bottom = 503.66
 texture_normal = ExtResource( 4 )
 expand = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="Normal"]
 margin_left = -27.2202
@@ -92,15 +87,12 @@ texture = ExtResource( 5 )
 
 [node name="Nightmare" type="TextureButton" parent="."]
 editor/display_folded = true
-margin_left = 624.889
-margin_top = 200.311
-margin_right = 862.889
-margin_bottom = 431.311
+margin_left = 625.997
+margin_top = 273.441
+margin_right = 863.997
+margin_bottom = 504.441
 texture_normal = ExtResource( 6 )
 expand = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="Nightmare"]
 margin_left = -53.0256
@@ -126,9 +118,6 @@ shake_duration = 0.3
 
 [node name="Transition Timer" type="Timer" parent="."]
 
-[node name="Back Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="SFX" parent="." instance=ExtResource( 10 )]
 stream = ExtResource( 11 )
 volume_db = -3.0
@@ -141,21 +130,10 @@ volume = -3.0
 position = Vector2( 513.576, 297.068 )
 current = true
 
-[node name="Back Button" type="TextureButton" parent="."]
-margin_left = 378.324
-margin_top = 448.867
-margin_right = 639.324
-margin_bottom = 533.867
-texture_normal = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
-expand = true
-
-[node name="Transition" parent="." instance=ExtResource( 14 )]
+[node name="Transition" parent="." instance=ExtResource( 12 )]
 fade_out_time = 0.7
 fade_in_time = 0.7
 
 [connection signal="pressed" from="Normal" to="." method="load_normal_mode"]
 [connection signal="pressed" from="Nightmare" to="." method="load_nightmare_mode"]
 [connection signal="timeout" from="Transition Timer" to="." method="_on_Transition_Timer_timeout"]
-[connection signal="timeout" from="Back Timer" to="." method="_on_Back_Timer_timeout"]
-[connection signal="pressed" from="Back Button" to="." method="_on_Back_Button_pressed"]

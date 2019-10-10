@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Menus/Title Screen/Title Screen.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sky.png" type="Texture" id=2]
@@ -10,64 +10,24 @@
 [ext_resource path="res://Resources/Title Screen/foot_2.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Title Screen/body.png" type="Texture" id=9]
 [ext_resource path="res://Resources/Title Screen/head.png" type="Texture" id=10]
-[ext_resource path="res://Resources/title_test.png" type="Texture" id=11]
-[ext_resource path="res://Resources/UI Elements/play_button_default.png" type="Texture" id=12]
+[ext_resource path="res://Resources/UI Elements/play_button_default.png" type="Texture" id=11]
+[ext_resource path="res://Resources/UI Elements/play_button_pressed.png" type="Texture" id=12]
 [ext_resource path="res://Resources/UI Elements/play_button_hover.png" type="Texture" id=13]
 [ext_resource path="res://Menus/Title Screen/TextureButton.gd" type="Script" id=14]
 [ext_resource path="res://Components/Camera Shake/Camera Shake.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Resources/Audio/gun (1).wav" type="AudioStream" id=16]
 [ext_resource path="res://Tools/SFX/SFX.gd" type="Script" id=17]
-[ext_resource path="res://Resources/UI Elements/settings_button_deafult.png" type="Texture" id=18]
-[ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=19]
-[ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=20]
-[ext_resource path="res://Resources/UI Elements/exit_button_default.png" type="Texture" id=21]
-[ext_resource path="res://Resources/UI Elements/exit_button_hover.png" type="Texture" id=22]
-[ext_resource path="res://Menus/Title Screen/Exit Game.gd" type="Script" id=23]
-[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=24]
-
-[sub_resource type="Animation" id=1]
-resource_name = "Default"
-length = 2.0
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Ui Elements/Title:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 599.56, 141 ), Vector2( 599.56, 131.585 ), Vector2( 599.56, 121 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "Default"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Ui Elements/Buttons:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 10 ), Vector2( 0, 0 ), Vector2( 0, -10 ) ]
-}
+[ext_resource path="res://Resources/UI Elements/settings_button_default.png" type="Texture" id=18]
+[ext_resource path="res://Resources/UI Elements/settings_button_pressed.png" type="Texture" id=19]
+[ext_resource path="res://Resources/UI Elements/settings_button_hover.png" type="Texture" id=20]
+[ext_resource path="res://Menus/Title Screen/Settings.gd" type="Script" id=21]
+[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=22]
 
 [node name="Title Screen" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="BG Elements" type="Node2D" parent="."]
 editor/display_folded = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sky" type="Sprite" parent="BG Elements"]
 position = Vector2( 599.998, 201.74 )
@@ -87,11 +47,6 @@ texture = ExtResource( 5 )
 
 [node name="FG Elements" type="Node2D" parent="."]
 editor/display_folded = true
-position = Vector2( -5.55188, 179.51 )
-scale = Vector2( 0.75, 0.75 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Cliff" type="Sprite" parent="FG Elements"]
 position = Vector2( 148.934, 535.301 )
@@ -115,6 +70,57 @@ texture = ExtResource( 9 )
 position = Vector2( 167.137, 292.068 )
 texture = ExtResource( 10 )
 
+[node name="Start Game" type="TextureButton" parent="."]
+margin_left = 515.877
+margin_top = 329.664
+margin_right = 710.877
+margin_bottom = 415.664
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+expand = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Camera Shake" parent="Start Game" instance=ExtResource( 15 )]
+shake_power = 3.0
+shake_duration = 0.2
+
+[node name="Timer" type="Timer" parent="Start Game"]
+wait_time = 1.1
+one_shot = true
+
+[node name="Button Sound" type="AudioStreamPlayer" parent="Start Game"]
+stream = ExtResource( 16 )
+pitch_scale = 0.6
+script = ExtResource( 17 )
+
+[node name="Settings" type="TextureButton" parent="."]
+margin_left = 496.881
+margin_top = 434.33
+margin_right = 733.881
+margin_bottom = 522.33
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 20 )
+expand = true
+script = ExtResource( 21 )
+
+[node name="Timer" type="Timer" parent="Settings"]
+wait_time = 1.1
+one_shot = true
+
+[node name="Button Sound" type="AudioStreamPlayer" parent="Settings"]
+stream = ExtResource( 16 )
+pitch_scale = 0.6
+script = ExtResource( 17 )
+
+[node name="Camera Shake" parent="Settings" instance=ExtResource( 15 )]
+shake_power = 3.0
+shake_duration = 0.2
+
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "Camera",
 ]]
@@ -122,94 +128,16 @@ position = Vector2( 608.871, 240.587 )
 current = true
 zoom = Vector2( 1.19, 1.19 )
 
-[node name="Ui Elements" type="Node2D" parent="."]
-position = Vector2( 27.995, -40 )
-
-[node name="Title" type="Sprite" parent="Ui Elements"]
-position = Vector2( 599.56, 133.331 )
-scale = Vector2( 2.15702, 2.15702 )
-texture = ExtResource( 11 )
-
-[node name="Buttons" type="Node2D" parent="Ui Elements"]
-position = Vector2( 0, 10 )
-
-[node name="Start Game" type="TextureButton" parent="Ui Elements/Buttons"]
-editor/display_folded = true
-margin_left = 519.631
-margin_top = 339.123
-margin_right = 694.631
-margin_bottom = 389.123
-texture_normal = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
-expand = true
-script = ExtResource( 14 )
-
-[node name="Camera Shake" parent="Ui Elements/Buttons/Start Game" instance=ExtResource( 15 )]
-shake_power = 3.0
-shake_duration = 0.2
-
-[node name="Timer" type="Timer" parent="Ui Elements/Buttons/Start Game"]
-wait_time = 1.1
-one_shot = true
-
-[node name="Button Sound" type="AudioStreamPlayer" parent="Ui Elements/Buttons/Start Game"]
-stream = ExtResource( 16 )
-pitch_scale = 0.6
-script = ExtResource( 17 )
-
-[node name="Settings" type="TextureButton" parent="Ui Elements/Buttons"]
-editor/display_folded = true
-margin_left = 468.263
-margin_top = 417.341
-margin_right = 748.263
-margin_bottom = 467.341
-texture_normal = ExtResource( 18 )
-texture_hover = ExtResource( 19 )
-expand = true
-script = ExtResource( 20 )
-
-[node name="Timer" type="Timer" parent="Ui Elements/Buttons/Settings"]
-wait_time = 1.1
-one_shot = true
-
-[node name="Button Sound" type="AudioStreamPlayer" parent="Ui Elements/Buttons/Settings"]
-stream = ExtResource( 16 )
-pitch_scale = 0.6
-script = ExtResource( 17 )
-
-[node name="Camera Shake" parent="Ui Elements/Buttons/Settings" instance=ExtResource( 15 )]
-shake_power = 3.0
-shake_duration = 0.2
-
-[node name="Exit Game" type="TextureButton" parent="Ui Elements/Buttons"]
-editor/display_folded = true
-margin_left = 470.368
-margin_top = 498.716
-margin_right = 750.368
-margin_bottom = 548.716
-texture_normal = ExtResource( 21 )
-texture_hover = ExtResource( 22 )
-expand = true
-script = ExtResource( 23 )
-
-[node name="Button Sound" type="AudioStreamPlayer" parent="Ui Elements/Buttons/Exit Game"]
-stream = ExtResource( 16 )
-pitch_scale = 0.6
-script = ExtResource( 17 )
-
-[node name="Camera Shake" parent="Ui Elements/Buttons/Exit Game" instance=ExtResource( 15 )]
-shake_power = 3.0
-shake_duration = 0.2
-
-[node name="Transition" parent="." instance=ExtResource( 24 )]
-margin_left = -67.0
-margin_top = -156.0
-margin_right = 1283.0
-margin_bottom = 630.0
+[node name="Transition" parent="." instance=ExtResource( 22 )]
+margin_left = -37.0
+margin_top = -137.0
+margin_right = 1249.0
+margin_bottom = 621.0
 fade_out_time = 0.7
 fade_in_time = 0.7
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 [node name="Title Player" type="AnimationPlayer" parent="."]
 autoplay = "Default"
 anims/Default = SubResource( 1 )
@@ -229,8 +157,13 @@ anims/Default = SubResource( 2 )
 [connection signal="timeout" from="Ui Elements/Buttons/Settings/Timer" to="Ui Elements/Buttons/Settings" method="_on_Timer_timeout"]
 [connection signal="pressed" from="Ui Elements/Buttons/Exit Game" to="Ui Elements/Buttons/Exit Game" method="_on_Settings_pressed"]
 =======
+=======
+>>>>>>> parent of 6379bc4... UPDATED MENUS 1/2
 [connection signal="pressed" from="Start Game" to="Start Game" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Start Game/Timer" to="Start Game" method="_on_Timer_timeout"]
 [connection signal="pressed" from="Settings" to="Settings" method="_on_Settings_pressed"]
 [connection signal="timeout" from="Settings/Timer" to="Settings" method="_on_Timer_timeout"]
+<<<<<<< HEAD
 >>>>>>> rileys-gonna-mess-up-the-master-branch-branch
+=======
+>>>>>>> parent of 6379bc4... UPDATED MENUS 1/2

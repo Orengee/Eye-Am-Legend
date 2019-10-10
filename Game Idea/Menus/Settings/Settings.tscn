@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Menus/Settings/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Tools/Desert Tileset.tres" type="TileSet" id=2]
@@ -8,13 +8,14 @@
 [ext_resource path="res://Menus/Settings/Music Settings.gd" type="Script" id=6]
 [ext_resource path="res://Resources/manaspc.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Menus/Settings/Sound FX Settings.gd" type="Script" id=8]
-[ext_resource path="res://Menus/Settings/Full Screen.gd" type="Script" id=9]
-[ext_resource path="res://Resources/UI Elements/back_button_default.png" type="Texture" id=10]
-[ext_resource path="res://Resources/UI Elements/back_button_hover.png" type="Texture" id=11]
+[ext_resource path="res://Resources/health_bar_top.png" type="Texture" id=9]
+[ext_resource path="res://Resources/health_bar_bottom.png" type="Texture" id=10]
+[ext_resource path="res://Resources/menu_button_overlay.png" type="Texture" id=11]
 [ext_resource path="res://Menus/Settings/Back.gd" type="Script" id=12]
-[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Resources/Audio/ding.wav" type="AudioStream" id=14]
-[ext_resource path="res://Tools/SFX/SFX.gd" type="Script" id=15]
+[ext_resource path="res://Menus/Settings/Full Screen.gd" type="Script" id=13]
+[ext_resource path="res://Screen Transition.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Resources/Audio/ding.wav" type="AudioStream" id=15]
+[ext_resource path="res://Tools/SFX/SFX.gd" type="Script" id=16]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -36,6 +37,10 @@ size = 24
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 24
 font_data = ExtResource( 7 )
 
@@ -107,13 +112,39 @@ custom_fonts/font = SubResource( 5 )
 text = "SFX Volume"
 valign = 1
 
+[node name="Back" type="TextureButton" parent="."]
+editor/display_folded = true
+margin_left = 278.386
+margin_top = 417.28
+margin_right = 750.386
+margin_bottom = 501.28
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+expand = true
+script = ExtResource( 12 )
+
+[node name="Back" type="Label" parent="Back"]
+margin_left = 154.883
+margin_top = 11.0001
+margin_right = 326.883
+margin_bottom = 75.0001
+custom_fonts/font = SubResource( 6 )
+text = "Back"
+
+[node name="Camera2D" type="Camera2D" parent="." groups=[
+"Camera",
+]]
+position = Vector2( 512.861, 299.282 )
+current = true
+
 [node name="Full Screen" type="CheckBox" parent="."]
 editor/display_folded = true
 margin_left = 373.647
 margin_top = 265.077
 margin_right = 397.648
 margin_bottom = 289.077
-script = ExtResource( 9 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -123,25 +154,11 @@ margin_left = -271.955
 margin_top = -12.585
 margin_right = 28.045
 margin_bottom = 34.415
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Fullscreen"
 valign = 1
 
-[node name="Back" type="TextureButton" parent="."]
-editor/display_folded = true
-margin_left = 390.926
-margin_top = 409.322
-margin_right = 636.926
-margin_bottom = 488.322
-texture_normal = ExtResource( 10 )
-texture_hover = ExtResource( 11 )
-expand = true
-script = ExtResource( 12 )
-
-[node name="Timer" type="Timer" parent="Back"]
-one_shot = true
-
-[node name="Transition" parent="." instance=ExtResource( 13 )]
+[node name="Transition" parent="." instance=ExtResource( 14 )]
 margin_left = -30.3366
 margin_top = -48.566
 margin_right = 1072.66
@@ -151,6 +168,7 @@ fade_in_time = 0.7
 
 [node name="SFX Test" type="AudioStreamPlayer" parent="."]
 <<<<<<< HEAD
+<<<<<<< HEAD
 stream = ExtResource( 14 )
 script = ExtResource( 15 )
 
@@ -159,6 +177,10 @@ script = ExtResource( 15 )
 ]]
 position = Vector2( 512.861, 299.282 )
 current = true
+=======
+stream = ExtResource( 15 )
+script = ExtResource( 16 )
+>>>>>>> parent of 6379bc4... UPDATED MENUS 1/2
 
 =======
 stream = ExtResource( 15 )
@@ -171,4 +193,3 @@ script = ExtResource( 16 )
 [connection signal="mouse_exited" from="Sound FX Settings" to="." method="_on_Sound_FX_Settings_mouse_exited"]
 [connection signal="value_changed" from="Sound FX Settings" to="." method="_on_Sound_FX_Settings_value_changed"]
 [connection signal="pressed" from="Back" to="Back" method="_on_Back_pressed"]
-[connection signal="timeout" from="Back/Timer" to="Back" method="_on_Timer_timeout"]
