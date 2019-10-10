@@ -2,7 +2,7 @@ extends Node2D
 
 var wave = 0
 
-export(int) var spawn_limit = 46
+export(int) var spawn_limit = 75
 
 export(int) var spawn_box_width = 1
 export(int) var spawn_box_height = 1
@@ -43,7 +43,7 @@ var in_wave = false
 var enemies_per_wave = 10
 var enemies_spawned = 0
 
-var grunts_per_wave = 15
+var grunts_per_wave = 17
 var grunts_per_spawn = 3
 var grunt_spawn_interval = 2.5
 var spawned_grunts = 0

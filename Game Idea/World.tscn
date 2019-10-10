@@ -131,7 +131,7 @@ fade_in_time = 0.8
 
 [node name="Wave Manager" parent="." instance=ExtResource( 16 )]
 editor/display_folded = true
-spawn_limit = 38
+spawn_limit = 65
 spawn_box_width = 20
 spawn_box_height = 20
 
