@@ -208,6 +208,7 @@ margin_right = 1283.0
 margin_bottom = 630.0
 fade_out_time = 0.7
 fade_in_time = 0.7
+<<<<<<< HEAD
 
 [node name="Title Player" type="AnimationPlayer" parent="."]
 autoplay = "Default"
@@ -227,3 +228,9 @@ anims/Default = SubResource( 2 )
 [connection signal="pressed" from="Ui Elements/Buttons/Settings" to="Ui Elements/Buttons/Settings" method="_on_Settings_pressed"]
 [connection signal="timeout" from="Ui Elements/Buttons/Settings/Timer" to="Ui Elements/Buttons/Settings" method="_on_Timer_timeout"]
 [connection signal="pressed" from="Ui Elements/Buttons/Exit Game" to="Ui Elements/Buttons/Exit Game" method="_on_Settings_pressed"]
+=======
+[connection signal="pressed" from="Start Game" to="Start Game" method="_on_TextureButton_pressed"]
+[connection signal="timeout" from="Start Game/Timer" to="Start Game" method="_on_Timer_timeout"]
+[connection signal="pressed" from="Settings" to="Settings" method="_on_Settings_pressed"]
+[connection signal="timeout" from="Settings/Timer" to="Settings" method="_on_Timer_timeout"]
+>>>>>>> rileys-gonna-mess-up-the-master-branch-branch
